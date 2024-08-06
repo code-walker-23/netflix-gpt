@@ -7,7 +7,7 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDRyDQ3FTQW_xC2OCQ2aO_91Yfmc3egqms",
+  apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
   authDomain: "netflix-gpt-watch-tv-shows.firebaseapp.com",
   projectId: "netflix-gpt-watch-tv-shows",
   storageBucket: "netflix-gpt-watch-tv-shows.appspot.com",
