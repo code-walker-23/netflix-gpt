@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
+import { setPersistence, browserLocalPersistence } from "firebase/auth";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -14,9 +15,12 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export default app;
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+setPersistence(auth, browserLocalPersistence).catch((error) => {
+  console.error("Error setting persistence: ", error);
+});
+
+export { auth, db };
