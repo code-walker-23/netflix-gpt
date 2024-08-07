@@ -1,20 +1,18 @@
-
 /* logo netflix */
 .logo {
-  width: 12rem; /* Increase size */
-  filter: brightness(0) saturate(100%) invert(8%) sepia(100%) saturate(8000%) hue-rotate(-10deg) brightness(100%) contrast(120%);
+  width: 10rem; /* Increase size */
+  filter: brightness(0) saturate(100%) invert(8%) sepia(100%) saturate(8000%)
+    hue-rotate(-10deg) brightness(100%) contrast(120%);
   /* Increased brightness and contrast for a vivid red */
   margin-left: 2rem; /* Move logo to the right */
 }
 
 @media (min-width: 768px) {
   .logo {
-    width: 11rem; /* Larger size for medium screens and up */
-    margin-left: 3rem; /* More margin for larger screens */
+    width: 10rem; /* Larger size for medium screens and up */
+    margin-left: 1rem; /* More margin for larger screens */
   }
 }
-
-
 
 /* Checkbox */
 
@@ -50,4 +48,3 @@
   top: 0.2rem;
   left: 0.3rem;
 }
-
