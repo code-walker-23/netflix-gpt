@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  setPersistence,
-  browserLocalPersistence,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { setDoc, doc } from "firebase/firestore";
@@ -12,6 +10,7 @@ import { db } from "../utils/firebase";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { checkValidData } from "../utils/validat";
+import useAuthStateChange from "../hooks/useAuthStateChange";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -20,7 +19,6 @@ const Login = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,10 +58,9 @@ const Login = () => {
       );
       console.log("User signed in:", userCredential.user);
       toast.success("User signed in successfully!", { position: "top-center" });
-      setTimeout(
-        () => navigate("/browse"), // Redirect to browse page
-        3000
-      );
+      setTimeout(() => {
+        // Custom hook will handle redirection based on auth state
+      }, 3000);
     } catch (error) {
       toast.error(`Error: ${error.message}`, { position: "bottom-center" });
     }
@@ -102,6 +99,8 @@ const Login = () => {
     setFirstName("");
     setLastName("");
   };
+
+  useAuthStateChange();
 
   return (
     <div className="relative h-screen flex items-center justify-center bg-black">
