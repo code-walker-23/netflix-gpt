@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -11,6 +10,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { checkValidData } from "../utils/validat";
 import useAuthStateChange from "../hooks/useAuthStateChange";
+import { NETFLIX_BACKGROUND_IMG,NETFLIX_LOGO } from "../utils/constant";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -50,7 +50,6 @@ const Login = () => {
 
   const handleSignIn = async () => {
     try {
-      // await setPersistence(auth, browserLocalPersistence); // Ensure session persistence
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
@@ -58,9 +57,7 @@ const Login = () => {
       );
       console.log("User signed in:", userCredential.user);
       toast.success("User signed in successfully!", { position: "top-center" });
-      setTimeout(() => {
-        // Custom hook will handle redirection based on auth state
-      }, 3000);
+
     } catch (error) {
       toast.error(`Error: ${error.message}`, { position: "bottom-center" });
     }
@@ -107,14 +104,12 @@ const Login = () => {
       <div className="absolute top-0 left-0 right-0 px-4 py-2 bg-transparent z-20 flex items-center">
         <img
           className="logo"
-          src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-          alt="Netflix Logo"
+          src={NETFLIX_LOGO}
         />
       </div>
 
       <img
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/826348c2-cdcb-42a0-bc11-a788478ba5a2/6d20b198-e7ab-4e9f-a1aa-666faa0298f9/IN-en-20240729-POP_SIGNUP_TWO_WEEKS-perspective_WEB_a67d8c9e-8121-4a74-98e4-8005eb2df227_large.jpg"
-        alt="background"
+        src={NETFLIX_BACKGROUND_IMG}
         className="absolute inset-0 object-cover w-full h-full opacity-60"
       />
       <div className="relative z-10 bg-black bg-opacity-70 p-16 rounded-lg shadow-lg w-full max-w-md">

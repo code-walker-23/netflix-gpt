@@ -48,3 +48,32 @@
   top: 0.2rem;
   left: 0.3rem;
 }
+
+
+/* .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem; 
+} */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .header .nav {
+    display: block; 
+  }
+
+  .header .nav a {
+    display: block;
+    margin: 0.5rem 0; 
+  }
+
+  .header .logo {
+    max-width: 100px; 
+  }
+}
+
+/* Add this to your global CSS file */
+
