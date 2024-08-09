@@ -1,3 +1,14 @@
+/* global.css or tailwind.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .video-background {
+    @apply relative w-full h-full overflow-hidden;
+  }
+
+  .video-background__iframe {
+    @apply absolute top-0 left-0 w-full h-full border-none;
+  }
+}

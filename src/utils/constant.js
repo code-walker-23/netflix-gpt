@@ -14,3 +14,5 @@ export const options = {
 };
 
 export const USER_ICON = "https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.webp";
+
+export const YOUTUBE_URL = "https://www.youtube.com/watch?v=";

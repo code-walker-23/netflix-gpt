@@ -13,6 +13,7 @@ export const useNowPlayingMovies = () => {
     const json = await data.json();
     dispatch(setNowPlayingMovies(json.results));
     // console.log(json);
+    console.log("fetching now playing movies");
   };
 
   useEffect(() => {
