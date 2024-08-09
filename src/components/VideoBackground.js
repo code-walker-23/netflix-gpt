@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useFetchTrailer from "../hooks/useFetchTrailer";
 
+
 const VideoBackground = ({ movie }) => {
   const [trailer, setTrailer] = useState(null);
   useFetchTrailer(movie, setTrailer);
@@ -14,13 +15,12 @@ const VideoBackground = ({ movie }) => {
     <div className="w-screen">
       {youtubeKey && (
         <iframe
-          className="w-screen aspect-video"
+          className="w-screen aspect-video absolute top-0 left-0 z-0 object-cover " 
           src={youtubeTrailerUrl}
           title="YouTube video player"
-          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
         ></iframe>
       )}
     </div>

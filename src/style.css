@@ -78,3 +78,31 @@
 
 
 
+/* Global styles for an ultra-thin scrollbar */
+html {
+  scrollbar-width: thin; /* Firefox: thin scrollbar */
+  scrollbar-color: #888 #e0e0e0; /* Firefox: thumb color and track color */
+}
+
+/* WebKit Browsers (Chrome, Safari, Opera) */
+body::-webkit-scrollbar {
+  width: 6px; /* Very thin scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #e0e0e0; /* Light gray background for the track */
+  border-radius: 8px; /* Rounded corners for the track */
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #888; /* Medium gray color for the thumb */
+  border-radius: 8px; /* Rounded corners for the thumb */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker gray on hover */
+}
+
+
+

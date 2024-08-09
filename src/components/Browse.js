@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "./Header";
-import { useNowPlayingMovies } from "../hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import useAuthStateChange from "../hooks/useAuthStateChange";
+import useFetchMoviesList from "../hooks/useFetchAllMoviesList";
+import ShimmerEffect from "../utils/Shimmer";
 
 const Browse = () => {
+  const { loading } = useFetchMoviesList();
   useAuthStateChange();
-  useNowPlayingMovies();
+
   return (
-    <div className="browse relative h-screen">
+    <div className="browse relative">
       <Header />
-      <MainContainer />
-      <SecondaryContainer />
+      {loading ? (
+        <ShimmerEffect />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
     </div>
   );
 };

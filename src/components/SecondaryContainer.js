@@ -1,16 +1,20 @@
 import React from "react";
+import MovieList from "./MovieList";
+import { useSelector } from "react-redux";
+
 
 const SecondaryContainer = () => {
+  const listNowPlaying = useSelector((state) => state.movies?.nowPlayingMovies);
+  const listPopular = useSelector((state) => state.movies?.popularMovies);
+  const listTopRated = useSelector((state) => state.movies?.topRatedMovies);
+  const listUpcoming = useSelector((state) => state.movies?.upcomingMovies);
+
   return (
     <div className="p-8 bg-gray-900 text-white">
-      <h2 className="text-2xl font-bold mb-4">Trending Now</h2>
-      {/* Add movie carousel or additional content here */}
-      <div className="flex space-x-4 overflow-x-scroll">
-        {/* Example movie cards */}
-        <div className="w-40 h-60 bg-gray-800 rounded-lg"></div>
-        <div className="w-40 h-60 bg-gray-800 rounded-lg"></div>
-        <div className="w-40 h-60 bg-gray-800 rounded-lg"></div>
-      </div>
+      <MovieList title="Now Playing" list={listNowPlaying} />
+      <MovieList title="Popular" list={listPopular} />
+      <MovieList title="Top Rated" list={listTopRated} />
+      <MovieList title="Upcoming" list={listUpcoming} />
     </div>
   );
 };

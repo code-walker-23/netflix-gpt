@@ -13,6 +13,19 @@ export const options = {
   },
 };
 
-export const USER_ICON = "https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.webp";
+export const USER_ICON =
+  "https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.webp";
 
 export const YOUTUBE_URL = "https://www.youtube.com/watch?v=";
+
+export const POPULAR_MOVIES =
+  "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+
+export const NOW_PLAYING_MOVIES =
+  "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
+
+export const TOP_RATED_MOVIES =
+  "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
+
+export const UPCOMING_MOVIES =
+  "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";

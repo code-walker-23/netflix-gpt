@@ -12,6 +12,7 @@ import { checkValidData } from "../utils/validat";
 import useAuthStateChange from "../hooks/useAuthStateChange";
 import { NETFLIX_BACKGROUND_IMG,NETFLIX_LOGO } from "../utils/constant";
 
+
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [email, setEmail] = useState("");
@@ -55,7 +56,6 @@ const Login = () => {
         email,
         password
       );
-      console.log("User signed in:", userCredential.user);
       toast.success("User signed in successfully!", { position: "top-center" });
 
     } catch (error) {
@@ -71,7 +71,7 @@ const Login = () => {
         password
       );
       const user = userCredential.user;
-      console.log("User created:", user);
+
 
       await setDoc(doc(db, "users", user.uid), {
         email: user.email,

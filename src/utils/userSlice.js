@@ -10,9 +10,6 @@ const userSlice = createSlice({
     removeUser: (state) => {
       return null;
     },
-    setLoading(state, action) {
-      state.loading = action.payload;
-    },
   },
 });
 

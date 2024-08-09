@@ -6,16 +6,15 @@ import play_icon from "../assets/play_icon.png";
 import info_icon from "../assets/info_icon.png";
 
 const MainContainer = () => {
-  const moviesList = useSelector((state) => state.nowPlayingMovies?.moviesList);
-  const mainMovie = moviesList[6];
-  console.log(mainMovie);
+  const moviesList = useSelector((state) => state.movies?.nowPlayingMovies);
+  const mainMovie = moviesList[1];
 
   if (!mainMovie) return null; // early return if mainMovie is falsy
 
   const { original_title, overview } = mainMovie;
 
   return (
-    <div className="relative h-screen bg-black text-white overflow-hidden">
+    <div className="scrollable-element relative h-screen bg-black text-white overflow-hidden">
       <VideoBackground movie={mainMovie} />
       <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16 bg-gradient-to-t from-black via-transparent to-transparent">
         <VideoTitle title={original_title} overview={overview} />
