@@ -28,3 +28,6 @@ export const TOP_RATED_MOVIES =
 
 export const UPCOMING_MOVIES =
   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
+
+export const RATED_MOVIES_LIST =
+  "https://api.themoviedb.org/3/genre/tv/list?language=en";
