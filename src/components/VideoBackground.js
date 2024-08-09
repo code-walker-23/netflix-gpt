@@ -11,15 +11,17 @@ const VideoBackground = ({ movie }) => {
     : "";
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden ">
+    <div className="w-screen">
       {youtubeKey && (
         <iframe
-          className="absolute top-0 left-0 w-full h-full border-none"
+          className="w-screen aspect-video"
           src={youtubeTrailerUrl}
-          title="YouTube trailer"
-          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-          allowFullScreen
-        />
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
       )}
     </div>
   );

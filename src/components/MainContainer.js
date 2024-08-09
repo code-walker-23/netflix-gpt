@@ -7,7 +7,7 @@ import info_icon from "../assets/info_icon.png";
 
 const MainContainer = () => {
   const moviesList = useSelector((state) => state.nowPlayingMovies?.moviesList);
-  const mainMovie = moviesList[0];
+  const mainMovie = moviesList[6];
   console.log(mainMovie);
 
   if (!mainMovie) return null; // early return if mainMovie is falsy
