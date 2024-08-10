@@ -11,7 +11,6 @@ const HeroSection = ({
   adult,
   imdbUrl,
   overview,
-  homepage,
   vote_average,
   videoPageUrl,
 }) => (
@@ -35,19 +34,34 @@ const HeroSection = ({
 
       {/* Text Content */}
       <div className="mt-6 md:mt-0 md:ml-6 lg:ml-8 max-w-lg text-center md:text-left flex flex-col justify-center">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{title}</h1>
-        <p className="text-base md:text-lg mb-4">
-          {adult ? "Rated: R" : "Rated: PG"}
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
+          {title}
+        </h1>
+        <p className="text-base md:text-lg mb-2">
+          {adult ? (
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/2249/2249141.png"
+              width="60"
+            ></img>
+          ) : (
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/2249/2249138.png"
+              width="60"
+            ></img>
+          )}
         </p>
         {vote_average && (
-          <div className="flex items-center justify-center md:justify-start mb-4">
-            <FaStar className="text-yellow-400 text-2xl" />
+          <div className="flex items-center justify-center md:justify-start mb-2">
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/1040/1040230.png"
+              width="25"
+            ></img>
             <span className="text-white text-xl font-semibold ml-2">
               {vote_average.toFixed(1)}
             </span>
           </div>
         )}
-        <div className="mb-6">
+        <div className="mb-1">
           <a
             href={imdbUrl}
             target="_blank"
@@ -61,13 +75,13 @@ const HeroSection = ({
             />
           </a>
         </div>
-        <Link to={videoPageUrl} className="block text-center md:text-left mt-4">
+        <Link to={videoPageUrl} className="block text-center md:text-left">
           <button className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 text-white py-3 px-6 rounded-lg shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105 flex items-center justify-center mx-auto md:mx-0">
             <BsFillPlayCircleFill className="text-2xl mr-2" />
             <span className="font-semibold text-lg">Play Trailer</span>
           </button>
         </Link>
-        <p className="text-gray-300 mt-4">{overview}</p>
+        <p className="text-gray-300 mt-2">{overview}</p>
       </div>
     </div>
   </div>

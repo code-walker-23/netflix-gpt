@@ -1,9 +1,9 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./Login";
+import Login from "../Login/Login";
 import Browse from "./Browse";
 import MovieDetail from "../MovieDetail/MovieDetail";
-import VideoPage from "../MovieDetail/VideoPage";
+import VideoPage from "../MovieDetail/Video/VideoPage";
 
 const Body = () => {
   const appRouter = createBrowserRouter([

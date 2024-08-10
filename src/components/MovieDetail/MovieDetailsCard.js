@@ -67,8 +67,9 @@ const DetailList = ({ icon, title, items, logoPaths }) => (
           {logoPaths && logoPaths[index] && (
             <img
               className="w-12 h-12 object-contain rounded-full border border-gray-700"
-              src={`https://image.tmdb.org/t/p/w500${logoPaths[index]}`}
+              src={logoPaths[index] ? `https://image.tmdb.org/t/p/w500${logoPaths[index]}` : ''} // Ensure the URL is valid
               alt={item}
+              onError={(e) => e.target.style.display = 'none'} // Hide image if error loading
             />
           )}
           <span className="text-gray-300">{item}</span>
