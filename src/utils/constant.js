@@ -34,3 +34,29 @@ export const RATED_MOVIES_LIST =
 
 export const MOVIE_DETAIL = "https://api.themoviedb.org/3/movie/";
 export const MOVIE_VIDEOS = "https://api.themoviedb.org/3/movie/";
+
+// Define the base URL for YouTube embeds
+export const YOUTUBE_BASE_URL = "https://www.youtube.com/embed/";
+
+// Define the parameters for the YouTube embed
+export const YOUTUBE_PARAMS =
+  "?autoplay=1&loop=1&playlist={youtubeKey}&controls=0&modestbranding=1&playsinline=1&mute=0&showinfo=0&fs=1&rel=0&iv_load_policy=3";
+
+// Function to generate the full YouTube trailer URL
+export const getYouTubeTrailerUrl = (youtubeKey) =>
+  youtubeKey
+    ? `${YOUTUBE_BASE_URL}${youtubeKey}${YOUTUBE_PARAMS.replace(
+        "{youtubeKey}",
+        youtubeKey
+      )}`
+    : "";
+
+export const YOUTUBE_PARAMS_MUTE =
+  "?autoplay=1&loop=1&playlist={youtubeKey}&controls=0&modestbranding=1&playsinline=1&mute=1&showinfo=0&fs=1&rel=0&iv_load_policy=3";
+export const getYouTubeTrailerUrl_MUTE = (youtubeKey) =>
+  youtubeKey
+    ? `${YOUTUBE_BASE_URL}${youtubeKey}${YOUTUBE_PARAMS_MUTE.replace(
+        "{youtubeKey}",
+        youtubeKey
+      )}`
+    : "";

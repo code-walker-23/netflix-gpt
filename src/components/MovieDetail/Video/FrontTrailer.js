@@ -1,12 +1,8 @@
 import React from "react";
-
+import { getYouTubeTrailerUrl } from "../../../utils/constant";
 const FrontTrailer = ({ trailer }) => {
   const youtubeKey = trailer[0].key;
-  console.log("Trailer",trailer);
-  console.log("Youtube Key",youtubeKey);
-  const youtubeTrailerUrl = youtubeKey
-    ? `https://www.youtube.com/embed/${youtubeKey}?autoplay=1&loop=1&playlist=${youtubeKey}&controls=0&modestbranding=1&playsinline=1&mute=0&showinfo=0&fs=1&rel=0&iv_load_policy=3`
-    : "";
+  const youtubeTrailerUrl = getYouTubeTrailerUrl(youtubeKey);
 
   return (
     <div className="w-screen">

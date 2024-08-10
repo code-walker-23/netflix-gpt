@@ -1,5 +1,4 @@
 import React from "react";
-import { FaStar } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { BsFillPlayCircleFill } from "react-icons/bs";
@@ -61,7 +60,7 @@ const HeroSection = ({
             </span>
           </div>
         )}
-        <div className="mb-1">
+        <div className="mb-2">
           <a
             href={imdbUrl}
             target="_blank"
@@ -76,7 +75,7 @@ const HeroSection = ({
           </a>
         </div>
         <Link to={videoPageUrl} className="block text-center md:text-left">
-          <button className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 text-white py-3 px-6 rounded-lg shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105 flex items-center justify-center mx-auto md:mx-0">
+          <button className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 text-white py-3 px-6 rounded-lg shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105 flex items-center justify-center mx-auto mb-2 md:mx-0">
             <BsFillPlayCircleFill className="text-2xl mr-2" />
             <span className="font-semibold text-lg">Play Trailer</span>
           </button>

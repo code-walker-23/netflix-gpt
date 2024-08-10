@@ -7,7 +7,7 @@ const MovieList = ({ title, list }) => {
 
   const scroll = (direction) => {
     if (scrollRef.current) {
-      const scrollAmount = 300; // Adjust scroll amount as needed
+      const scrollAmount = 300;
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",

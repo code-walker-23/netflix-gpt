@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import useFetchTrailer from "../../hooks/useFetchTrailer";
+import { getYouTubeTrailerUrl_MUTE } from "../../utils/constant";
 
-const VideoBackground = ({ id, mute }) => {
+const VideoBackground = ({ id }) => {
   const [trailer, setTrailer] = useState(null);
   useFetchTrailer(id, setTrailer);
 
   const youtubeKey = trailer?.key;
-  const youtubeTrailerUrl = youtubeKey
-    ? `https://www.youtube.com/embed/${youtubeKey}?autoplay=1&loop=1&playlist=${youtubeKey}&controls=0&modestbranding=1&playsinline=1&${mute}&showinfo=0&fs=1&rel=0&iv_load_policy=3`
-    : "";
+  const youtubeTrailerUrl = getYouTubeTrailerUrl_MUTE(youtubeKey);
 
   return (
     <div className="w-screen">

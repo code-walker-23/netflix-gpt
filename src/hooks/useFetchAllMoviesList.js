@@ -6,7 +6,6 @@ import {
   setTopRatedMovies,
   setUpcomingMovies,
   setNowPlayingMovies,
-  setRatedMovies,
 } from "../utils/moviesSlice";
 import {
   POPULAR_MOVIES,
@@ -32,7 +31,6 @@ const useFetchMoviesList = () => {
         fetch(TOP_RATED_MOVIES, options),
         fetch(UPCOMING_MOVIES, options),
         fetch(NOW_PLAYING_MOVIES, options),
-        fetch(RATED_MOVIES_LIST, options),
       ]);
 
       const [popularData, topRatedData, upcomingData, nowPlayingData] =

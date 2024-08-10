@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { auth } from "../../utils/firebase";
 import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleGptView } from "../../utils/gptSearchSlice";
 import { USER_ICON, NETFLIX_LOGO } from "../../utils/constant";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [showDropDown, setShowDropDown] = useState(false);
   const user = useSelector((state) => state.user);
 
@@ -51,6 +53,11 @@ const Header = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleToggle = () => {
+    console.log("Toggle GPT Search");
+    dispatch(toggleGptView());
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-b from-black via-transparent to-transparent text-white">
@@ -111,8 +118,18 @@ const Header = () => {
         </nav>
 
         <div className="relative flex items-center">
+          {user && (
+            <button
+              className="px-4 py-2 mx-2 rounded-lg bg-blue-800 text-white focus:outline-none hover:bg-blue-700 transition duration-300 z-10 relative"
+              onClick={handleToggle}
+            >
+              GPT Search
+            </button>
+          )}
           {user ? (
             <>
+              {/* GPT Search Button */}
+
               <img
                 ref={userIconRef}
                 src={USER_ICON}
@@ -123,7 +140,7 @@ const Header = () => {
               {showDropDown && (
                 <div
                   ref={dropdownRef}
-                  className="absolute top-12 right-0 w-48 bg-black border border-gray-600 rounded-lg shadow-lg"
+                  className="absolute top-12 right-0 w-48 bg-black border border-gray-600 rounded-lg shadow-lg z-50"
                 >
                   <Link
                     to="/profile"
@@ -152,11 +169,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
-
-
-
-
-
-
