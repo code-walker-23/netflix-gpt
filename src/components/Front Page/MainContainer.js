@@ -2,8 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import VideoTitle from "./VideoTitle";
 import VideoBackground from "./VideoBackground";
-import play_icon from "../assets/play_icon.png";
-import info_icon from "../assets/info_icon.png";
+import play_icon from "../../assets/play_icon.png";
+import info_icon from "../../assets/info_icon.png";
 
 const MainContainer = () => {
   const moviesList = useSelector((state) => state.movies?.nowPlayingMovies);
@@ -11,11 +11,13 @@ const MainContainer = () => {
 
   if (!mainMovie) return null; // early return if mainMovie is falsy
 
-  const { original_title, overview } = mainMovie;
+  const { original_title, overview, id } = mainMovie;
+  console.log("mainMovie", mainMovie);
+  console.log("id from mainContainer", id);
 
   return (
     <div className="scrollable-element relative h-screen bg-black text-white overflow-hidden">
-      <VideoBackground movie={mainMovie} />
+      <VideoBackground id={id} mute={"mute=1"} />
       <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16 bg-gradient-to-t from-black via-transparent to-transparent">
         <VideoTitle title={original_title} overview={overview} />
         <div className="mt-8 flex space-x-6">

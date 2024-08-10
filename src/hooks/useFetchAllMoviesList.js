@@ -6,9 +6,15 @@ import {
   setTopRatedMovies,
   setUpcomingMovies,
   setNowPlayingMovies,
-  setRatedMovies
-} from '../utils/moviesSlice';
-import { POPULAR_MOVIES, TOP_RATED_MOVIES, UPCOMING_MOVIES, NOW_PLAYING_MOVIES,RATED_MOVIES_LIST } from "../utils/constant";
+  setRatedMovies,
+} from "../utils/moviesSlice";
+import {
+  POPULAR_MOVIES,
+  TOP_RATED_MOVIES,
+  UPCOMING_MOVIES,
+  NOW_PLAYING_MOVIES,
+  RATED_MOVIES_LIST,
+} from "../utils/constant";
 
 const useFetchMoviesList = () => {
   const dispatch = useDispatch();
@@ -16,20 +22,26 @@ const useFetchMoviesList = () => {
 
   const fetchMoviesData = async () => {
     try {
-      const [popularResponse, topRatedResponse, upcomingResponse, nowPlayingResponse] = await Promise.all([
-        fetch(POPULAR_MOVIES,options),
-        fetch(TOP_RATED_MOVIES,options),
-        fetch(UPCOMING_MOVIES,options),
-        fetch(NOW_PLAYING_MOVIES,options),
+      const [
+        popularResponse,
+        topRatedResponse,
+        upcomingResponse,
+        nowPlayingResponse,
+      ] = await Promise.all([
+        fetch(POPULAR_MOVIES, options),
+        fetch(TOP_RATED_MOVIES, options),
+        fetch(UPCOMING_MOVIES, options),
+        fetch(NOW_PLAYING_MOVIES, options),
         fetch(RATED_MOVIES_LIST, options),
       ]);
 
-      const [popularData, topRatedData, upcomingData, nowPlayingData] = await Promise.all([
-        popularResponse.json(),
-        topRatedResponse.json(),
-        upcomingResponse.json(),
-        nowPlayingResponse.json(),
-      ]);
+      const [popularData, topRatedData, upcomingData, nowPlayingData] =
+        await Promise.all([
+          popularResponse.json(),
+          topRatedResponse.json(),
+          upcomingResponse.json(),
+          nowPlayingResponse.json(),
+        ]);
 
       dispatch(setPopularMovies(popularData.results));
       dispatch(setTopRatedMovies(topRatedData.results));

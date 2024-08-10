@@ -1,5 +1,5 @@
-import "./style.css";
-import Body from "./components/Body";
+import "./style/style.css";
+import Body from "./components/Main/Body";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 

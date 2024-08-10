@@ -1,8 +1,6 @@
-import React from "react";
 import { useEffect } from "react";
 import { options } from "../utils/constant";
-const useFetchTrailer = (movie, setTrailer) => {
-  const { id } = movie;
+const useFetchTrailer = (id, setTrailer) => {
   const fetchVideo = async () => {
     const json = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
@@ -14,6 +12,7 @@ const useFetchTrailer = (movie, setTrailer) => {
       (video) => video.type === "Trailer"
     );
     setTrailer(filterTrailer[0]);
+    console.log("id", id);
   };
   useEffect(() => {
     fetchVideo();

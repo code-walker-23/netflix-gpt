@@ -31,3 +31,6 @@ export const UPCOMING_MOVIES =
 
 export const RATED_MOVIES_LIST =
   "https://api.themoviedb.org/3/genre/tv/list?language=en";
+
+export const MOVIE_DETAIL = "https://api.themoviedb.org/3/movie/";
+export const MOVIE_VIDEOS = "https://api.themoviedb.org/3/movie/";

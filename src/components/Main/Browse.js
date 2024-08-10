@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "./Header";
-import MainContainer from "./MainContainer";
-import SecondaryContainer from "./SecondaryContainer";
-import useAuthStateChange from "../hooks/useAuthStateChange";
-import useFetchMoviesList from "../hooks/useFetchAllMoviesList";
-import ShimmerEffect from "../utils/Shimmer";
+import MainContainer from "../Front Page/MainContainer";
+import SecondaryContainer from "../Secondary Page/SecondaryContainer";
+import useAuthStateChange from "../../hooks/useAuthStateChange";
+import useFetchMoviesList from "../../hooks/useFetchAllMoviesList";
+import ShimmerEffect from "../../utils/Shimmer";
 
 const Browse = () => {
   const { loading } = useFetchMoviesList();
