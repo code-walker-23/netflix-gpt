@@ -1,4 +1,5 @@
 import React from "react";
+import { YOUTUBE_BASE_URL } from "../../../utils/constant";
 
 const OtherClips = ({ otherClips, handleVideoClick }) => {
   return (
@@ -13,7 +14,7 @@ const OtherClips = ({ otherClips, handleVideoClick }) => {
             <div className="relative w-full h-0 pb-[56.25%]">
               <iframe
                 className="absolute top-0 left-0 w-full h-full rounded-lg"
-                src={`https://www.youtube.com/embed/${video.key}`}
+                src={`${YOUTUBE_BASE_URL}${video.key}`}
                 title={video.name}
                 allow="autoplay; encrypted-media"
                 allowFullScreen

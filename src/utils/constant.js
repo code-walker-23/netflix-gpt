@@ -60,3 +60,16 @@ export const getYouTubeTrailerUrl_MUTE = (youtubeKey) =>
         youtubeKey
       )}`
     : "";
+
+export const TMDB_IMG_BASE_URL = "https://image.tmdb.org/t/p/original";
+export const TMDB_IMG_BASE_URL_500 = "https://image.tmdb.org/t/p/w500";
+export const RATED_R_IMG =
+  "https://cdn-icons-png.flaticon.com/128/2249/2249141.png";
+export const RATED_PG_IMG =
+  "https://cdn-icons-png.flaticon.com/128/2249/2249138.png";
+export const STAR = "https://cdn-icons-png.flaticon.com/128/1040/1040230.png";
+
+export const IMDB_LOGO =
+  "https://cdn-icons-png.flaticon.com/128/5977/5977585.png";
+
+export const IMDB_DETAILS = "https://www.imdb.com/title/";

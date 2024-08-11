@@ -6,13 +6,12 @@ import {
   setTopRatedMovies,
   setUpcomingMovies,
   setNowPlayingMovies,
-} from "../utils/moviesSlice";
+} from "../utils/Slices/moviesSlice";
 import {
   POPULAR_MOVIES,
   TOP_RATED_MOVIES,
   UPCOMING_MOVIES,
   NOW_PLAYING_MOVIES,
-  RATED_MOVIES_LIST,
 } from "../utils/constant";
 
 const useFetchMoviesList = () => {
@@ -54,7 +53,6 @@ const useFetchMoviesList = () => {
 
   useEffect(() => {
     fetchMoviesData();
-    console.log("useFetchMoviesList");
   }, [dispatch]);
 
   return { loading };

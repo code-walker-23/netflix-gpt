@@ -2,7 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { BsFillPlayCircleFill } from "react-icons/bs";
-
+import { TMDB_IMG_BASE_URL } from "../../utils/constant";
+import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
+import { RATED_PG_IMG } from "../../utils/constant";
+import { RATED_R_IMG } from "../../utils/constant";
+import { STAR } from "../../utils/constant";
+import { IMDB_LOGO } from "../../utils/constant";
 const HeroSection = ({
   backdrop_path,
   poster_path,
@@ -16,7 +21,7 @@ const HeroSection = ({
   <div
     className="relative h-[80vh] bg-cover bg-center"
     style={{
-      backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop_path})`,
+      backgroundImage: `url(${TMDB_IMG_BASE_URL}${backdrop_path})`,
     }}
   >
     <div className="absolute inset-0 bg-black opacity-60"></div>
@@ -24,7 +29,7 @@ const HeroSection = ({
       {/* Poster Image */}
       <motion.img
         className="w-48 md:w-64 lg:w-80 rounded-lg shadow-2xl border-4 border-gray-800"
-        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+        src={`${TMDB_IMG_BASE_URL_500}${poster_path}`}
         alt={title}
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -38,23 +43,14 @@ const HeroSection = ({
         </h1>
         <p className="text-base md:text-lg mb-2">
           {adult ? (
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/2249/2249141.png"
-              width="60"
-            ></img>
+            <img src={RATED_R_IMG} width="60"></img>
           ) : (
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/2249/2249138.png"
-              width="60"
-            ></img>
+            <img src={RATED_PG_IMG} width="60"></img>
           )}
         </p>
         {vote_average && (
           <div className="flex items-center justify-center md:justify-start mb-2">
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/1040/1040230.png"
-              width="25"
-            ></img>
+            <img src={STAR} width="25"></img>
             <span className="text-white text-xl font-semibold ml-2">
               {vote_average.toFixed(1)}
             </span>
@@ -67,11 +63,7 @@ const HeroSection = ({
             rel="noopener noreferrer"
             className="text-blue-400 underline text-lg font-semibold flex items-center justify-center md:justify-start"
           >
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/5977/5977585.png"
-              width="60"
-              alt="IMDb Logo"
-            />
+            <img src={IMDB_LOGO} width="60" alt="IMDb Logo" />
           </a>
         </div>
         <Link to={videoPageUrl} className="block text-center md:text-left">

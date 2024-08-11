@@ -1,16 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Header from "./Header";
+import Header from "./Header/Header";
 import MainContainer from "../Front Page/MainContainer";
 import SecondaryContainer from "../Secondary Page/SecondaryContainer";
 import useAuthStateChange from "../../hooks/useAuthStateChange";
 import useFetchMoviesList from "../../hooks/useFetchAllMoviesList";
 import ShimmerEffect from "../../utils/Shimmer";
-import GptSearch from "../Gpt/GptSearchPage"; // Ensure GptSearch is imported
+import GptSearch from "../Gpt/GptSearchPage";
 
 const Browse = () => {
   const { loading } = useFetchMoviesList();
-  const {showGptView} = useSelector((state) => state.gptToggle);
+  const { showGptView } = useSelector((state) => state.gptToggle);
   useAuthStateChange();
 
   return (

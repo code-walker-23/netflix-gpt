@@ -1,4 +1,5 @@
 import React from "react";
+import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
 
 const MovieCards = ({ movie}) => {
   const { title, poster_path, vote_average } = movie;
@@ -6,7 +7,7 @@ const MovieCards = ({ movie}) => {
   return (
     <div className="relative w-60 h-80 bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl flex-shrink-0">
       <img
-        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+        src={`${TMDB_IMG_BASE_URL_500}${poster_path}`}
         alt={title}
         className="w-full h-full object-cover"
       />

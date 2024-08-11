@@ -1,9 +1,10 @@
 import React from "react";
-import { NETFLIX_LOGO } from "../../utils/constant";
-import { NETFLIX_BACKGROUND_IMG } from "../../utils/constant";
+import { NETFLIX_LOGO, NETFLIX_BACKGROUND_IMG } from "../../utils/constant";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { handleSubmit } from "./Login Logic/handleSubmit";
+
 const LoginStyle = ({
-  handleSubmit,
   toggleSignIn,
   setEmail,
   setPassword,
@@ -15,22 +16,38 @@ const LoginStyle = ({
   password,
   errorMessage,
   isSignInForm,
+  setIsSignForm,
+  setErrorMessage,
 }) => {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    handleSubmit({
+      setErrorMessage,
+      isSignInForm,
+      setIsSignForm,
+      email,
+      password,
+      firstName,
+      lastName,
+    });
+  };
+
   return (
     <div className="relative h-screen flex items-center justify-center bg-black">
       <div className="absolute top-0 left-0 right-0 px-4 py-2 bg-transparent z-20 flex items-center">
-        <img className="logo" src={NETFLIX_LOGO} />
+        <img className="logo" src={NETFLIX_LOGO} alt="Netflix Logo" />
       </div>
 
       <img
         src={NETFLIX_BACKGROUND_IMG}
         className="absolute inset-0 object-cover w-full h-full opacity-60"
+        alt="Netflix Background"
       />
       <div className="relative z-10 bg-black bg-opacity-70 p-16 rounded-lg shadow-lg w-full max-w-md">
         <h1 className="text-3xl font-bold text-white mb-8">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleFormSubmit} className="space-y-6">
           {!isSignInForm && (
             <>
               <input

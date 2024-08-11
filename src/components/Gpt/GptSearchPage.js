@@ -1,6 +1,6 @@
 import React from "react";
 import GptSearchBar from "./GptSearchBar";
-import { NETFLIX_BACKGROUND_IMG } from "../../utils/constant"; // Adjust the import path as needed
+import { NETFLIX_BACKGROUND_IMG } from "../../utils/constant";
 
 const MainLayout = () => {
   return (

@@ -12,7 +12,6 @@ const useFetchTrailer = (id, setTrailer) => {
       (video) => video.type === "Trailer"
     );
     setTrailer(filterTrailer[0]);
-    console.log("id", id);
   };
   useEffect(() => {
     fetchVideo();

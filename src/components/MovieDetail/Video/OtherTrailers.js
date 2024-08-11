@@ -1,4 +1,5 @@
 import React from "react";
+import { YOUTUBE_BASE_URL } from "../../../utils/constant";
 
 const OtherTrailers = ({ trailers, handleVideoClick }) => {
   return (
@@ -16,7 +17,7 @@ const OtherTrailers = ({ trailers, handleVideoClick }) => {
             <div className="relative w-full h-0 pb-[56.25%]">
               <iframe
                 className="absolute top-0 left-0 w-full h-full rounded-lg transition-transform transform group-hover:scale-105"
-                src={`https://www.youtube.com/embed/${trailer.key}`}
+                src={`${YOUTUBE_BASE_URL}${trailer.key}`}
                 title={trailer.name}
                 allow="autoplay; encrypted-media"
                 allowFullScreen

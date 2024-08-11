@@ -5,6 +5,7 @@ import HeroSection from "./HeroSection";
 import MovieDetailsCard from "./MovieDetailsCard";
 import OverviewCard from "./OverviewCard";
 import ShimmerEffect from "../../utils/Shimmer";
+import { IMDB_DETAILS } from "../../utils/constant";
 
 const MovieDetail = () => {
   const { movieId } = useParams();
@@ -64,7 +65,7 @@ const MovieDetail = () => {
     revenue,
   } = movieDetail;
 
-  const imdbUrl = imdb_id ? `https://www.imdb.com/title/${imdb_id}` : "#";
+  const imdbUrl = imdb_id ? `${IMDB_DETAILS}${imdb_id}` : "#";
 
   // URL for video page
   const videoPageUrl = `/browse/moviedetail/${movieId}/videos`;

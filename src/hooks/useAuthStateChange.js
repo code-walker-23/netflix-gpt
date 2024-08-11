@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
 import { auth } from '../utils/firebase';
-import { addUser, removeUser } from '../utils/userSlice';
+import { addUser, removeUser } from '../utils/Slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 const useAuthStateChange = () => {

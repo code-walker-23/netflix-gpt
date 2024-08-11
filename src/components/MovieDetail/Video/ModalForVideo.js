@@ -1,4 +1,5 @@
 import React from "react";
+import {YOUTUBE_BASE_URL} from "../../../utils/constant";
 
 const ModalForVideo = ({ selectedVideo, handleCloseModal }) => {
   if (!selectedVideo) return null;
@@ -21,9 +22,8 @@ const ModalForVideo = ({ selectedVideo, handleCloseModal }) => {
         <div className="relative w-full h-0 pb-[56.25%]">
           <iframe
             className="absolute top-0 left-0 w-full h-full border-4 border-red-600 rounded-lg"
-            src={`https://www.youtube.com/embed/${selectedVideo.key}?autoplay=1&controls=1`}
+            src={`${YOUTUBE_BASE_URL}${selectedVideo.key}?autoplay=1&controls=1`}
             title={selectedVideo.name}
-            frameBorder="0"
             allow="autoplay; encrypted-media"
             allowFullScreen
           ></iframe>

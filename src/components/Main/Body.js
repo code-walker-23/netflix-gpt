@@ -1,6 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "../Login/Login";
+import Login from "../Login/LoginPage";
 import Browse from "./Browse";
 import MovieDetail from "../MovieDetail/MovieDetail";
 import VideoPage from "../MovieDetail/Video/VideoPage";
