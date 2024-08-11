@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const gpToggleSlice = createSlice({
+const gptToggleSlice = createSlice({
   name: "gptToggle",
   initialState: {
     showGptView: false,
@@ -11,5 +11,5 @@ const gpToggleSlice = createSlice({
     },
   },
 });
-export const { toggleGptView } = gpToggleSlice.actions;
-export default gpToggleSlice.reducer;
+export const { toggleGptView } = gptToggleSlice.actions;
+export default gptToggleSlice.reducer;

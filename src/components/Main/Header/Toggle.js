@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { toggleGptView } from "../../../utils/Slices/gptSearchSlice";
+import { toggleGptView } from "../../../utils/Slices/gptToggleSlice";
 
 export const toggle = ({setShowDropDown,userIconRef,dropdownRef}) => {
   const dispatch = useDispatch();
