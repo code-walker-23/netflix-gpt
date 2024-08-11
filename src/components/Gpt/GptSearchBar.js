@@ -4,8 +4,10 @@ import { SUPPORTED_LANGUAGES } from "../../utils/languageConstants";
 import { useDispatch } from "react-redux";
 import { setSelectedLang } from "../../utils/Slices/configSlice";
 import { useSelector } from "react-redux";
+import client from "../../utils/openai";
 
 const GptSearchBar = () => {
+  const [searchText, setSearchText] = React.useState("");
   const selectedLanguage = useSelector((state) => state.config.selectedLang);
   const dispatch = useDispatch();
 
@@ -13,27 +15,42 @@ const GptSearchBar = () => {
     dispatch(setSelectedLang(event.target.value));
   };
 
+  const handleGptSearch = async () => {
+    const gptResults = await client.chat.completions.create({
+      messages: [{ role: "user", content: searchText }],
+      model: "gpt-3.5-turbo",
+    });
+    console.log(gptResults.choices);
+  };
+
   return (
-    <div className="flex flex-col items-center min-h-screen px-4 py-16">
+    <div className="flex flex-col items-center min-h-screen px-4 py-16 ">
       {/* Header */}
       <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-white mb-2">Find Your Next Movie</h1>
-        <p className="text-lg text-gray-300">Discover great content with our search tool.</p>
+        <h1 className="text-5xl font-extrabold text-white mb-4 leading-tight">
+          Find Your Next Movie
+        </h1>
+        <p className="text-lg text-gray-200">
+          Discover great content with our powerful search tool.
+        </p>
       </header>
 
       {/* Search Container */}
-      <div className="relative w-full max-w-3xl p-4 border border-gray-700 rounded-lg bg-gray-800 bg-opacity-70">
-        <div className="flex items-center space-x-4">
+      <div className="relative w-full max-w-4xl p-6 border border-gray-700 rounded-lg bg-white shadow-lg">
+        <div className="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-4">
           {/* Language Selector */}
           <div className="flex items-center space-x-2">
-            <label htmlFor="language-select" className="text-lg font-semibold text-gray-300">
+            <label
+              htmlFor="language-select"
+              className="text-lg font-semibold text-gray-700"
+            >
               Language
             </label>
             <select
               id="language-select"
               value={selectedLanguage}
               onChange={handleLanguageChange}
-              className="px-3 py-2 border border-gray-600 rounded-lg bg-gray-900 text-gray-100 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300 ease-in-out hover:scale-105"
+              className="px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-black placeholder-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-300 ease-in-out hover:scale-105"
             >
               {SUPPORTED_LANGUAGES.map((language) => (
                 <option value={language.identifier} key={language.identifier}>
@@ -44,15 +61,20 @@ const GptSearchBar = () => {
           </div>
 
           {/* Search Bar */}
-          <div className="relative flex-grow flex items-center">
+          <form
+            className="relative flex-grow flex items-center"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <input
               type="text"
               placeholder={lang[selectedLanguage].gptSearchPlaceholder}
-              className="w-full py-3 pl-12 pr-16 text-sm rounded-lg border border-gray-600 bg-gray-900 text-gray-100 placeholder-gray-400 shadow-sm transition-all duration-300 ease-in-out hover:scale-105 focus:scale-110 focus:ring-2 focus:ring-red-500"
+              className="w-full py-3 pl-6 pr-16 text-sm rounded-lg border border-gray-300 bg-gray-50 text-black placeholder-gray-700 shadow-sm transition-transform duration-300 ease-in-out focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => setSearchText(e.target.value)}
             />
             <button
               type="submit"
-              className="absolute right-0 top-0 bottom-0 px-4 flex items-center bg-red-600 text-white rounded-r-lg hover:bg-red-700 transition-transform duration-300 ease-in-out transform hover:scale-105"
+              className="absolute right-0 top-0 bottom-0 px-4 flex items-center bg-blue-600 text-white rounded-r-lg hover:bg-blue-700 transition-transform duration-300 ease-in-out transform hover:scale-105"
+              onClick={handleGptSearch}
             >
               <svg
                 className="w-6 h-6"
@@ -68,9 +90,11 @@ const GptSearchBar = () => {
                   d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.35-4.35"
                 />
               </svg>
-              <span className="ml-2 hidden lg:inline">{lang[selectedLanguage].search}</span>
+              <span className="ml-2 hidden lg:inline">
+                {lang[selectedLanguage].search}
+              </span>
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
