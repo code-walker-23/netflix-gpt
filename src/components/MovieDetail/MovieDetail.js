@@ -22,7 +22,6 @@ const MovieDetail = () => {
       if (!response.ok) throw new Error("Failed to fetch movie details");
       const data = await response.json();
       setMovieDetail(data);
-      console.log(data);
     } catch (error) {
       setError(error.message);
     } finally {

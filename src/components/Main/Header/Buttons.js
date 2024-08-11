@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { USER_ICON } from "../../../utils/constant";
 import { handleSignOut } from "./handleSignOut";
-
 const Buttons = ({
   handleToggle,
   dropdownRef,
@@ -12,6 +11,7 @@ const Buttons = ({
   toggleDropDown,
 }) => {
   const user = useSelector((state) => state.user);
+  const showGpt = useSelector((state) => state.gptToggle.showGptView);
   return (
     <div className="relative flex items-center">
       {user && (
@@ -19,7 +19,7 @@ const Buttons = ({
           className="px-4 py-2 mx-2 rounded-lg bg-blue-800 text-white focus:outline-none hover:bg-blue-700 transition duration-300 z-10 relative"
           onClick={handleToggle}
         >
-          GPT Search
+          {!showGpt ? "GPT Search" : "HomePage"}
         </button>
       )}
       {user ? (
