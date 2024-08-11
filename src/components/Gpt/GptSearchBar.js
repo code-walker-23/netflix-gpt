@@ -20,7 +20,9 @@ const GptSearchBar = () => {
       messages: [{ role: "user", content: searchText }],
       model: "gpt-3.5-turbo",
     });
+    // console.log(gptResults.choices);
     console.log(gptResults.choices);
+
   };
 
   return (
