@@ -33,7 +33,6 @@ export const toggle = ({setShowDropDown,userIconRef,dropdownRef}) => {
     }, []);
   
     const handleToggle = () => {
-      console.log("Toggle GPT Search");
       dispatch(toggleGptView());
     };
 
