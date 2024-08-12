@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Header from "./Header/Header";
 import MainContainer from "../Front Page/MainContainer";
 import SecondaryContainer from "../Secondary Page/SecondaryContainer";
 import useAuthStateChange from "../../hooks/useAuthStateChange";
@@ -11,11 +10,9 @@ import GptSearch from "../Gpt/GptSearchPage";
 const Browse = () => {
   const { loading } = useFetchMoviesList();
   const { showGptView } = useSelector((state) => state.gptToggle);
-  useAuthStateChange();
 
   return (
-    <div className="browse relative">
-      <Header />
+    <div className="browse relative min-h-screen bg-gray-900 text-white">
       {showGptView ? (
         <GptSearch /> // Show GptSearch when showGptView is true
       ) : (

@@ -20,7 +20,6 @@ const Login = () => {
     setLastName("");
   };
 
-  useAuthStateChange();
 
   return (
     <div>

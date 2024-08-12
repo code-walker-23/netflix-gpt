@@ -34,7 +34,7 @@ const MovieList = ({ title, list }) => {
         {/* Movie List */}
         <div
           ref={scrollRef}
-          className="flex overflow-auto space-x-4 py-4 scrollbar-none whitespace-nowrap"
+          className="flex overflow-x-auto space-x-4 py-4 scrollbar-hide whitespace-nowrap"
           style={{ scrollBehavior: "smooth" }}
         >
           {list &&
@@ -53,18 +53,6 @@ const MovieList = ({ title, list }) => {
           <FaChevronRight className="w-6 h-6" />
         </button>
       </div>
-
-      {/* Custom scrollbar styles */}
-      <style jsx>{`
-        .scrollbar-none::-webkit-scrollbar {
-          display: none;
-        }
-
-        .scrollbar-none {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </div>
   );
 };

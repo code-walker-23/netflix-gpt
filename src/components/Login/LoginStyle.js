@@ -1,5 +1,5 @@
 import React from "react";
-import { NETFLIX_LOGO, NETFLIX_BACKGROUND_IMG } from "../../utils/constant";
+import { NETFLIX_BACKGROUND_IMG } from "../../utils/constant";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { handleSubmit } from "./Login Logic/handleSubmit";
@@ -34,10 +34,6 @@ const LoginStyle = ({
 
   return (
     <div className="relative h-screen flex items-center justify-center bg-black">
-      <div className="absolute top-0 left-0 right-0 px-4 py-2 bg-transparent z-20 flex items-center">
-        <img className="logo" src={NETFLIX_LOGO} alt="Netflix Logo" />
-      </div>
-
       <img
         src={NETFLIX_BACKGROUND_IMG}
         className="absolute inset-0 object-cover w-full h-full opacity-60"
