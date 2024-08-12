@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import MovieCards from "./MovieCards";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Using FontAwesome icons
 import { Link } from "react-router-dom";
+
 const MovieList = ({ title, list }) => {
   const scrollRef = useRef(null);
 
@@ -33,12 +34,13 @@ const MovieList = ({ title, list }) => {
         {/* Movie List */}
         <div
           ref={scrollRef}
-          className="flex overflow-hidden space-x-4 py-4 scrollbar-none whitespace-nowrap"
+          className="flex overflow-auto space-x-4 py-4 scrollbar-none whitespace-nowrap"
+          style={{ scrollBehavior: "smooth" }}
         >
           {list &&
             list.map((movie) => (
-              <Link to={`/browse/moviedetail/${movie.id}`} key={movie.id}>
-                <MovieCards key={movie.id} movie={movie} />
+              <Link to={`/browse/moviedetail/${movie.id}`} key={movie.id} target="_blank">
+                <MovieCards movie={movie} />
               </Link>
             ))}
         </div>
@@ -51,6 +53,18 @@ const MovieList = ({ title, list }) => {
           <FaChevronRight className="w-6 h-6" />
         </button>
       </div>
+
+      {/* Custom scrollbar styles */}
+      <style jsx>{`
+        .scrollbar-none::-webkit-scrollbar {
+          display: none;
+        }
+
+        .scrollbar-none {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 };

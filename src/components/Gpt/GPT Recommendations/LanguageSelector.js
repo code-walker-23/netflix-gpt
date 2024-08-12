@@ -1,6 +1,6 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedLang } from '../../../utils/Slices/configSlice';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedLang } from "../../../utils/Slices/gpt/configSlice";
 import { SUPPORTED_LANGUAGES } from "../../../utils/languageConstants";
 
 const LanguageSelector = () => {
@@ -13,7 +13,10 @@ const LanguageSelector = () => {
 
   return (
     <div className="flex items-center space-x-2">
-      <label htmlFor="language-select" className="text-lg font-semibold text-gray-700">
+      <label
+        htmlFor="language-select"
+        className="text-lg font-semibold text-gray-700"
+      >
         Language
       </label>
       <select

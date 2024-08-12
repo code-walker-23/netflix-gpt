@@ -1,8 +1,12 @@
-// components/ResultsBox.js
 import React from 'react';
 import MovieList from '../../Secondary Page/MovieList';
+import { useSelector } from 'react-redux';
 
-const ResultsBox = ({ loading, error, movieDetails }) => {
+const ResultsBox = () => {
+  const movieDetails = useSelector((state) => state.moviesGpt.movieDetails);
+  const loading = useSelector((state) => state.moviesGpt.loading);
+  const error = useSelector((state) => state.moviesGpt.error);
+  
   return (
     <div className="w-full max-w-6xl mt-8">
       {loading && (
