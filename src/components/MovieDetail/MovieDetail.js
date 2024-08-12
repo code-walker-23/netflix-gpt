@@ -6,6 +6,7 @@ import MovieDetailsCard from "./MovieDetailsCard";
 import OverviewCard from "./OverviewCard";
 import ShimmerEffect from "../../utils/Shimmer";
 import { IMDB_DETAILS } from "../../utils/constant";
+import Header from "../Main/Header/Header";
 
 const MovieDetail = () => {
   const { movieId } = useParams();
@@ -71,6 +72,7 @@ const MovieDetail = () => {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
+      <div className="m-3 p-2"><Header /></div>
       <HeroSection
         backdrop_path={backdrop_path}
         poster_path={poster_path}
