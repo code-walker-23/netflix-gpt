@@ -1,11 +1,8 @@
-// components/GptSearchBar.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { options } from "../../../utils/constant";
 import Header from "./Header";
 import SearchContainer from "./SearchContainer";
 import ResultsBox from "./ResultsBox";
-import { fetchMovieDetail } from "./fetchMovieDetail";
 import { handleGptSearch } from "./handleGptSearch";
 
 const GptSearchBar = () => {
@@ -16,26 +13,6 @@ const GptSearchBar = () => {
   const [error, setError] = useState(null);
   const [backgroundColor, setBackgroundColor] = useState("bg-transparent");
   const selectedLanguage = useSelector((state) => state.config.selectedLang);
-
-  useEffect(() => {
-    if (movieArray.length > 0) {
-      const fetchDetails = async () => {
-        const details = await Promise.all(
-          movieArray.map((movie) =>
-            fetchMovieDetail(movie, selectedLanguage, options)
-          )
-        );
-        const movieDetailsObj = movieArray.reduce((acc, movie, index) => {
-          acc[movie] = details[index];
-          return acc;
-        }, {});
-        setMovieDetails(movieDetailsObj);
-      };
-      fetchDetails();
-    } else {
-      setBackgroundColor("bg-transparent");
-    }
-  }, [movieArray, selectedLanguage]);
 
   return (
     <div

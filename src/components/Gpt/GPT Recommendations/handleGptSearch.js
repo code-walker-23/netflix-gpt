@@ -1,6 +1,5 @@
-// utils/gptUtils.js
 import axios from "axios";
-import { fetchMovieDetail } from "./fetchMovieDetail"; // Import the movie detail function
+import { fetchMovieDetail } from "./fetchMovieDetail"; 
 
 export const handleGptSearch = async (
   searchText,

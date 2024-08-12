@@ -15,7 +15,7 @@ const MovieCards = ({ movie}) => {
         <h3 className="text-white text-sm font-semibold truncate">{title}</h3>
         <div className="flex items-center mt-1">
           <span className="text-yellow-400 text-xs font-medium">
-            {vote_average.toFixed(1)}
+            {vote_average ? vote_average.toFixed(1) : "N/A"}
           </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

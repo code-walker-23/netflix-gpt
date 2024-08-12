@@ -1,4 +1,3 @@
-// components/SearchBar.js
 import React from 'react';
 
 const SearchBar = ({ searchText, setSearchText, handleGptSearch }) => {
