@@ -1,8 +1,7 @@
-// movie credits of actor
 import { useState, useEffect } from "react";
 import { options } from "../utils/constant";
 
-const useFetchActorDetail = (actorId, setMovies) => {
+const useFetchActorTvCredits = (actorId, setMovies) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -11,7 +10,7 @@ const useFetchActorDetail = (actorId, setMovies) => {
     setError(null);
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/person/${actorId}/movie_credits?language=en-US`,
+        `https://api.themoviedb.org/3/person/${actorId}/tv_credits?language=en-US`,
         options
       );
       if (!response.ok) {
@@ -35,4 +34,4 @@ const useFetchActorDetail = (actorId, setMovies) => {
   return { loading, error };
 };
 
-export default useFetchActorDetail;
+export default useFetchActorTvCredits;

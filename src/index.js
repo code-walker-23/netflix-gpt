@@ -13,7 +13,11 @@ import VideoPage from "./components/MovieDetail/Video/VideoPage";
 import Profile from "./components/Main/Profile";
 import MainLayout from "./components/Gpt/GptSearchPage";
 import MovieImages from "./components/MovieDetail/MovieImages";
-import {ActorDetail} from "./components/MovieDetail/ActorDetail";
+import { ActorDetail } from "./components/MovieDetail/ActorDetail";
+import TvDetail from "./components/TV Shows/TvDetail";
+import Trending from "./components/Main/Trending";
+import TvSeasonDetail from "./components/TV Shows/TvSeasonDetail";
+import TvSeasonEpisodeDetail from "./components/TV Shows/TvSeasonEpisodeDetail";
 
 const appRouter = createBrowserRouter([
   {
@@ -37,8 +41,20 @@ const appRouter = createBrowserRouter([
         element: <MovieDetail />,
       },
       {
+        path: "browse/tvdetail/:tvId",
+        element: <TvDetail />,
+      },
+      {
         path: "browse/moviedetail/:movieId/videos",
         element: <VideoPage />,
+      },
+      {
+        path: "/browse/tvdetail/:seriesId/season/:seasonNumber",
+        element: <TvSeasonDetail />,
+      },
+      {
+        path: "/browse/tvdetail/:seriesId/season/:seasonNumber/:episodeNumber",
+        element: <TvSeasonEpisodeDetail />,
       },
       {
         path: "gptsearch",
@@ -49,8 +65,12 @@ const appRouter = createBrowserRouter([
         element: <MovieImages />,
       },
       {
-        path : "browse/moviedetail/:movieId/actordetail/:actorName/:actorId",
-        element : <ActorDetail />
+        path: "browse/moviedetail/:movieId/actordetail/:actorName/:actorId",
+        element: <ActorDetail />,
+      },
+      {
+        path: "trending",
+        element: <Trending />,
       },
     ],
   },

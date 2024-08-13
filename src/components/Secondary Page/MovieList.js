@@ -4,7 +4,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Using FontAwe
 import { Link } from "react-router-dom";
 import "./hideScollbar.css";
 
-const MovieList = ({ title, list }) => {
+const MovieList = ({ title, list, type }) => {
   const scrollRef = useRef(null);
 
   const scroll = (direction) => {
@@ -40,7 +40,15 @@ const MovieList = ({ title, list }) => {
         >
           {list &&
             list.map((movie) => (
-              <Link to={`/browse/moviedetail/${movie.id}`} key={movie.id} target="_blank">
+              <Link
+                to={
+                  type == (movie.media_type ? movie.media_type : "movie")
+                    ? `/browse/moviedetail/${movie.id}`
+                    : `/browse/tvdetail/${movie.id}`
+                }
+                key={movie.id}
+                target="_blank"
+              >
                 <MovieCards movie={movie} />
               </Link>
             ))}

@@ -3,11 +3,12 @@ import { useSelector } from "react-redux";
 import MainContainer from "../Front Page/MainContainer";
 import SecondaryContainer from "../Secondary Page/SecondaryContainer";
 import useFetchMoviesList from "../../hooks/useFetchAllMoviesList";
+import useFetchTvList from "../../hooks/useFetchAllTvList";
 import ShimmerEffect from "../../utils/Shimmer";
-import { ToastContainer } from "react-toastify";
 
 const Browse = () => {
   const { loading } = useFetchMoviesList();
+  useFetchTvList();
   return (
     <div className="browse relative min-h-screen bg-gray-900 text-white">
       <>

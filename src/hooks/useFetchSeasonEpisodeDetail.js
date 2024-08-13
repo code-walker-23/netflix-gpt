@@ -1,24 +1,22 @@
-// movie credits of actor
 import { useState, useEffect } from "react";
 import { options } from "../utils/constant";
 
-const useFetchActorDetail = (actorId, setMovies) => {
+const useFetchSeasonEpisodeDetail = (tvId, seasonId, episodeNumber,setEpisodeDetail ) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  console.log(tvId, seasonId, episodeNumber, "tvId, seasonId, episodeNumber");
 
   const fetchDetail = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/person/${actorId}/movie_credits?language=en-US`,
-        options
-      );
+      const response = await fetch(`https://api.themoviedb.org/3/tv/${tvId}/season/${seasonId}/episode/${episodeNumber}?language=en-US`, options)
+
       if (!response.ok) {
         throw new Error("Failed to fetch movie credits");
       }
       const data = await response.json();
-      setMovies(data.cast); // array of movies of actor
+      setEpisodeDetail(data); // array of movies of actor
     } catch (error) {
       setError(error.message);
     } finally {
@@ -27,12 +25,10 @@ const useFetchActorDetail = (actorId, setMovies) => {
   };
 
   useEffect(() => {
-    if (actorId) {
-      fetchDetail();
-    }
-  }, [actorId]);
+    fetchDetail();
+  }, []);
 
   return { loading, error };
 };
 
-export default useFetchActorDetail;
+export default useFetchSeasonEpisodeDetail;

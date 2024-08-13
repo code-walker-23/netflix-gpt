@@ -19,7 +19,7 @@ const ResultsBox = () => {
       )}
       {Object.keys(movieDetails).length > 0 ? (
         Object.entries(movieDetails).map(([title, details]) => (
-          <MovieList key={title} title={title} list={details} />
+          <MovieList key={title} title={title} list={details} type={"movie"} />
         ))
       ) : !loading && !error ? (
         <p className="text-center text-gray-600 py-4">No results found</p>

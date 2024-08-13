@@ -5,6 +5,7 @@ import gptToggleReducers from "./Slices//gpt/gptToggleSlice";
 import configReducers from "./Slices/gpt/configSlice";
 import movieReducers from "./Slices/gpt/movieGptSlice";
 import userUpdateReducers from "./Slices/userUpdateSlice";
+import tvReducers from "./Slices/TvSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     gptToggle: gptToggleReducers,
     config: configReducers,
     moviesGpt: movieReducers,
+    tv: tvReducers,
   },
 });
 

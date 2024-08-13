@@ -23,7 +23,7 @@ const NavItems = () => {
         Movies
       </Link>
       <Link
-        to="/new"
+        to="/trending"
         className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
       >
         New & Popular

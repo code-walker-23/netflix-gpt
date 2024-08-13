@@ -73,3 +73,15 @@ export const IMDB_LOGO =
   "https://cdn-icons-png.flaticon.com/128/5977/5977585.png";
 
 export const IMDB_DETAILS = "https://www.imdb.com/title/";
+
+export const AIRING_TODAY_TV =
+  "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1";
+
+export const ON_THE_AIR_TV =
+  "https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1";
+
+export const POPULAR_TV =
+  "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1";
+
+export const TOP_RATED_TV =
+  "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1";

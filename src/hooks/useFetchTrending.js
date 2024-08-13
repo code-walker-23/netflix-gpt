@@ -1,8 +1,7 @@
-// movie credits of actor
 import { useState, useEffect } from "react";
 import { options } from "../utils/constant";
 
-const useFetchActorDetail = (actorId, setMovies) => {
+const useFetchTrending = (setTrending) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -11,14 +10,14 @@ const useFetchActorDetail = (actorId, setMovies) => {
     setError(null);
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/person/${actorId}/movie_credits?language=en-US`,
+        "https://api.themoviedb.org/3/trending/all/day?language=en-US",
         options
       );
       if (!response.ok) {
-        throw new Error("Failed to fetch movie credits");
+        throw new Error("Failed to fetch trending");
       }
       const data = await response.json();
-      setMovies(data.cast); // array of movies of actor
+      setTrending(data.results);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -27,12 +26,10 @@ const useFetchActorDetail = (actorId, setMovies) => {
   };
 
   useEffect(() => {
-    if (actorId) {
-      fetchDetail();
-    }
-  }, [actorId]);
+    fetchDetail();
+  }, []);
 
   return { loading, error };
 };
 
-export default useFetchActorDetail;
+export default useFetchTrending;
