@@ -6,6 +6,7 @@ import Footer from "./components/Main/Footer";
 import useAuthStateChange from "./hooks/useAuthStateChange";
 import { useSelector } from "react-redux";
 import GptSearch from "./components/Gpt/GptSearchPage";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -15,7 +16,7 @@ const App = () => {
     <div className="app">
       <Header />
       <main>
-        {user && showGpt ? <GptSearch /> : <Outlet />}
+        {user.email && showGpt ? <GptSearch /> : <Outlet />}
       </main>
       <Footer />
     </div>

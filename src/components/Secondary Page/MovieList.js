@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import MovieCards from "./MovieCards";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Using FontAwesome icons
 import { Link } from "react-router-dom";
+import "./hideScollbar.css";
 
 const MovieList = ({ title, list }) => {
   const scrollRef = useRef(null);

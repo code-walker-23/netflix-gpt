@@ -11,18 +11,19 @@ const Buttons = ({
   toggleDropDown,
 }) => {
   const user = useSelector((state) => state.user);
+  const{email} = user;
   const showGpt = useSelector((state) => state.gptToggle.showGptView);
   return (
     <div className="relative flex items-center">
-      {user && (
+      {email && (
         <button
           className="px-4 py-2 mx-2 rounded-lg bg-blue-800 text-white focus:outline-none hover:bg-blue-700 transition duration-300 z-10 relative"
           onClick={handleToggle}
         >
-          {!showGpt ? "GPT Search" : "HomePage"}
+          {showGpt ? "Go Back" : "GPT Search"}
         </button>
       )}
-      {user ? (
+      {email ? (
         <>
           <img
             ref={userIconRef}

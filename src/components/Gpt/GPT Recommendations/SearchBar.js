@@ -12,7 +12,7 @@ const SearchBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleGptSearch(); // Call the custom hook function
+    handleGptSearch(); 
   };
 
   return (

@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./style/index.css";
 import reportWebVitals from "./reportWebVitals";
-import { ToastContainer } from "react-toastify";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore"; // Import your Redux store
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -11,6 +10,8 @@ import Login from "./components/Login/LoginPage";
 import Browse from "./components/Main/Browse";
 import MovieDetail from "./components/MovieDetail/MovieDetail";
 import VideoPage from "./components/MovieDetail/Video/VideoPage";
+import Profile from "./components/Main/Profile";
+import MainLayout from "./components/Gpt/GptSearchPage";
 
 const appRouter = createBrowserRouter([
   {
@@ -18,20 +19,28 @@ const appRouter = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "", 
+        path: "",
         element: <Login />,
       },
       {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
         path: "browse",
-        element: <Browse />, 
+        element: <Browse />,
       },
       {
         path: "browse/moviedetail/:movieId",
-        element: <MovieDetail />, 
+        element: <MovieDetail />,
       },
       {
         path: "browse/moviedetail/:movieId/videos",
         element: <VideoPage />,
+      },
+      {
+        path: "/gptsearch",
+        element: <MainLayout />,
       },
     ],
   },
@@ -44,7 +53,6 @@ root.render(
     <Provider store={appStore}>
       <RouterProvider router={appRouter} />
     </Provider>
-    <ToastContainer />
   </React.StrictMode>
 );
 

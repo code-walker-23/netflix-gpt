@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
-import useAuthStateChange from "../../hooks/useAuthStateChange";
 import LoginStyle from "./LoginStyle";
+import { ToastContainer } from "react-toastify";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -38,6 +38,7 @@ const Login = () => {
         setIsSignInForm={setIsSignInForm}
         setErrorMessage={setErrorMessage}
       />
+      <ToastContainer />
     </div>
   );
 };
