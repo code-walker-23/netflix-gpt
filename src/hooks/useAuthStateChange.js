@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../utils/Slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import { setRemoveSearchData } from "../utils/Slices/gpt/movieGptSlice";
 
 const useAuthStateChange = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const useAuthStateChange = () => {
         }
       } else {
         dispatch(removeUser());
+        dispatch(setRemoveSearchData());
         if (window.location.pathname !== "/") {
           navigate("/");
         }

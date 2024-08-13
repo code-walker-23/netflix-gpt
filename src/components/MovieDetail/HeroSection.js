@@ -2,12 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { BsFillPlayCircleFill } from "react-icons/bs";
-import { TMDB_IMG_BASE_URL } from "../../utils/constant";
-import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
-import { RATED_PG_IMG } from "../../utils/constant";
-import { RATED_R_IMG } from "../../utils/constant";
-import { STAR } from "../../utils/constant";
-import { IMDB_LOGO } from "../../utils/constant";
+import { TMDB_IMG_BASE_URL, TMDB_IMG_BASE_URL_500, RATED_PG_IMG, RATED_R_IMG, STAR, IMDB_LOGO } from "../../utils/constant";
+
 const HeroSection = ({
   backdrop_path,
   poster_path,
@@ -17,6 +13,7 @@ const HeroSection = ({
   overview,
   vote_average,
   videoPageUrl,
+  movieId,
 }) => (
   <div
     className="relative h-[80vh] bg-cover bg-center"
@@ -43,14 +40,14 @@ const HeroSection = ({
         </h1>
         <p className="text-base md:text-lg mb-2">
           {adult ? (
-            <img src={RATED_R_IMG} width="60"></img>
+            <img src={RATED_R_IMG} width="60" alt="Rated R" />
           ) : (
-            <img src={RATED_PG_IMG} width="60"></img>
+            <img src={RATED_PG_IMG} width="60" alt="Rated PG" />
           )}
         </p>
         {vote_average && (
           <div className="flex items-center justify-center md:justify-start mb-2">
-            <img src={STAR} width="25"></img>
+            <img src={STAR} width="25" alt="Star" />
             <span className="text-white text-xl font-semibold ml-2">
               {vote_average.toFixed(1)}
             </span>
@@ -66,12 +63,19 @@ const HeroSection = ({
             <img src={IMDB_LOGO} width="60" alt="IMDb Logo" />
           </a>
         </div>
-        <Link to={videoPageUrl} className="block text-center md:text-left">
-          <button className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 text-white py-3 px-6 rounded-lg shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105 flex items-center justify-center mx-auto mb-2 md:mx-0">
-            <BsFillPlayCircleFill className="text-2xl mr-2" />
-            <span className="font-semibold text-lg">Play Trailer</span>
-          </button>
-        </Link>
+        <div className="flex flex-col md:flex-row gap-4">
+          <Link to={videoPageUrl} className="block">
+            <button className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 text-white py-3 px-6 rounded-lg shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+              <BsFillPlayCircleFill className="text-2xl mr-2" />
+              <span className="font-semibold text-lg">Play Trailer</span>
+            </button>
+          </Link>
+          <Link to={`/browse/moviedetail/${movieId}/images`} className="block">
+            <button className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-3 px-6 rounded-lg shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+              <span className="font-semibold text-lg">View Images</span>
+            </button>
+          </Link>
+        </div>
         <p className="text-gray-300 mt-2">{overview}</p>
       </div>
     </div>

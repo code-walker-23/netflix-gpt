@@ -83,6 +83,7 @@ const MovieDetail = () => {
         homepage={homepage}
         vote_average={vote_average}
         videoPageUrl={videoPageUrl}
+        movieId={movieId}
       />
       <div className="p-6 md:p-12 bg-gray-800 rounded-t-3xl relative z-10 mt-[-4rem]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -12,6 +12,7 @@ import MovieDetail from "./components/MovieDetail/MovieDetail";
 import VideoPage from "./components/MovieDetail/Video/VideoPage";
 import Profile from "./components/Main/Profile";
 import MainLayout from "./components/Gpt/GptSearchPage";
+import MovieImages from "./components/MovieDetail/MovieImages";
 
 const appRouter = createBrowserRouter([
   {
@@ -39,8 +40,12 @@ const appRouter = createBrowserRouter([
         element: <VideoPage />,
       },
       {
-        path: "/gptsearch",
+        path: "gptsearch",
         element: <MainLayout />,
+      },
+      {
+        path: "browse/moviedetail/:movieId/images",
+        element: <MovieImages />,
       },
     ],
   },

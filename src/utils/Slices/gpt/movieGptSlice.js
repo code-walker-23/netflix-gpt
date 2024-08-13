@@ -29,6 +29,14 @@ const movieSlice = createSlice({
     setSearchText(state, action) {
       state.searchText = action.payload;
     },
+    setRemoveSearchData(state) {
+      state.movieArray = [];
+      state.movieDetails = {};
+      state.searchText = "";
+      state.error = null;
+      state.loading = false;
+      state.backgroundColor = "bg-transparent";
+    }
   },
 });
 
@@ -39,7 +47,7 @@ export const {
   setSearchText,
   setError,
   setLoading,
-  set,
+  setRemoveSearchData,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;
