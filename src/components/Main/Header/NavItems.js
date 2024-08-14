@@ -32,13 +32,13 @@ const NavItems = () => {
         to="/movietvlist"
         className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
       >
-        Popular List
+        Genres
       </Link>
       <Link
-        to="/series"
+        to="/list"
         className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
       >
-        Series
+        List
       </Link>
       <Link
         to="/languages"

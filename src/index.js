@@ -19,8 +19,10 @@ import Trending from "./components/Main/Trending";
 import TvSeasonDetail from "./components/TV Shows/TvSeasonDetail";
 import TvSeasonEpisodeDetail from "./components/TV Shows/TvSeasonEpisodeDetail";
 import DiscoverMovies from "./components/Main/DiscoverMovies";
-import DiscoverTvShows from "./components/MovieDetail/DiscovertvShows";
-import MovieTvList from "./components/MovieDetail/MovieTvList";
+import DiscoverTvShows from "./components/Main/DiscovertvShows";
+import MovieTvList from "./components/Main/Genres";
+import ListPage from "./components/Main/List/ListPage";
+
 
 const appRouter = createBrowserRouter([
   {
@@ -34,6 +36,10 @@ const appRouter = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "list",
+        element: <ListPage />,
       },
       {
         path: "discovermovies",

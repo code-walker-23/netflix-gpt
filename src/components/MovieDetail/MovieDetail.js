@@ -7,6 +7,8 @@ import OverviewCard from "./OverviewCard";
 import ShimmerEffect from "../../utils/Shimmer";
 import CastList from "./CastList";
 import useFetchCast from "../../hooks/useFetchCast";
+import MovieRecommendation from "./MovieRecommendation";
+import MovieSimilar from "./MovieSimilar";
 
 const MovieDetail = () => {
   const { movieId } = useParams();
@@ -14,8 +16,8 @@ const MovieDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [cast, setCast] = useState([]);
-  
-  useFetchCast({movieId, setCast});
+
+  useFetchCast({ movieId, setCast });
 
   const fetchDetail = async () => {
     try {
@@ -39,14 +41,20 @@ const MovieDetail = () => {
 
   if (loading) {
     return (
-      <div className="text-white text-center p-8">
+      <div className="bg-gray-900 text-white min-h-screen flex items-center justify-center">
         <ShimmerEffect />
       </div>
     );
   }
+
   if (error) {
-    return <div className="text-red-500 text-center p-8">Error: {error}</div>;
+    return (
+      <div className="bg-gray-900 text-red-500 min-h-screen flex items-center justify-center">
+        <p className="text-lg">Error: {error}</p>
+      </div>
+    );
   }
+
   if (!movieDetail) return null;
 
   const {
@@ -75,8 +83,10 @@ const MovieDetail = () => {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
-      <div className="relative">
-        <div className="pt-20"> {/* Ensure proper padding for HeroSection */}
+      {/* Margin Container */}
+      <div className="relative bg-gray-900 mt-[2rem]">
+        {/* Hero Section */}
+        <div className="relative">
           <HeroSection
             backdrop_path={backdrop_path}
             poster_path={poster_path}
@@ -91,7 +101,9 @@ const MovieDetail = () => {
           />
         </div>
       </div>
-      <div className="p-6 md:p-12 bg-gray-800 rounded-t-3xl relative z-10 mt-[-4rem]">
+
+      {/* Main Content */}
+      <div className="bg-gray-800 p-6 md:p-12 rounded-t-3xl relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           <MovieDetailsCard
             release_date={release_date}
@@ -108,7 +120,15 @@ const MovieDetail = () => {
           />
           <OverviewCard overview={overview} homepage={homepage} />
         </div>
-        <div className="mt-8"> {/* Add margin to ensure spacing */}
+
+        {/* Recommendations and Cast */}
+        <div className="mt-8">
+          <MovieRecommendation movieId={movieId} />
+        </div>
+        <div className="mt-8">
+          <MovieSimilar movieId={movieId} />
+        </div>
+        <div className="mt-8">
           <CastList cast={cast} />
         </div>
       </div>

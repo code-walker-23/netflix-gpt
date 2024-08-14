@@ -85,3 +85,6 @@ export const POPULAR_TV =
 
 export const TOP_RATED_TV =
   "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1";
+
+
+export const MOVIE_RECOMMENDATIONS = "https://api.themoviedb.org/3/movie/";
