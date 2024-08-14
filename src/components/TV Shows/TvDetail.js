@@ -6,6 +6,7 @@ import ShimmerEffect from "../../utils/Shimmer";
 import TvSeriesCredit from "./TvSeriesCredit";
 import TvSeriesRecommendation from "./TvSeriesRecommendation";
 import TvSeriesSimilar from "./TvSeriesSimilar";
+import TvSeriesReviews from "./TvSeriesReviews";
 
 const TvDetail = () => {
   const { tvId } = useParams();
@@ -238,6 +239,9 @@ const TvDetail = () => {
       {/* Cast & Crew Section */}
       <div ref={creditsRef} className="py-10 px-5 lg:px-20 bg-gray-800">
         <TvSeriesCredit tvId={tvId} />
+      </div>
+      <div className="py-10 px-5 lg:px-20 bg-gray-800">
+        <TvSeriesReviews tvId={tvId} />
       </div>
     </div>
   );
