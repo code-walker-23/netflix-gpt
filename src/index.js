@@ -18,6 +18,9 @@ import TvDetail from "./components/TV Shows/TvDetail";
 import Trending from "./components/Main/Trending";
 import TvSeasonDetail from "./components/TV Shows/TvSeasonDetail";
 import TvSeasonEpisodeDetail from "./components/TV Shows/TvSeasonEpisodeDetail";
+import DiscoverMovies from "./components/Main/DiscoverMovies";
+import DiscoverTvShows from "./components/MovieDetail/DiscovertvShows";
+import MovieTvList from "./components/MovieDetail/MovieTvList";
 
 const appRouter = createBrowserRouter([
   {
@@ -31,6 +34,18 @@ const appRouter = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "discovermovies",
+        element: <DiscoverMovies />,
+      },
+      {
+        path: "discovertvshows",
+        element: <DiscoverTvShows />,
+      },
+      {
+        path: "movietvlist",
+        element: <MovieTvList />,
       },
       {
         path: "browse",
@@ -65,7 +80,7 @@ const appRouter = createBrowserRouter([
         element: <MovieImages />,
       },
       {
-        path: "browse/moviedetail/:movieId/actordetail/:actorName/:actorId",
+        path: "browse/moviedetail/:movieId/actordetail/:actorName/:actorId/:actorCreditId",
         element: <ActorDetail />,
       },
       {

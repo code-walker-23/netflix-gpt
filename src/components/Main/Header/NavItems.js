@@ -11,13 +11,13 @@ const NavItems = () => {
         Home
       </Link>
       <Link
-        to="/tv-shows"
+        to="/discovertvshows"
         className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
       >
         TV Shows
       </Link>
       <Link
-        to="/movies"
+        to="/discovermovies"
         className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
       >
         Movies
@@ -29,10 +29,10 @@ const NavItems = () => {
         New & Popular
       </Link>
       <Link
-        to="/my-list"
+        to="/movietvlist"
         className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
       >
-        My List
+        Popular List
       </Link>
       <Link
         to="/series"
