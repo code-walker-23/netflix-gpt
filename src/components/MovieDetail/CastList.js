@@ -9,7 +9,7 @@ const CastList = ({ cast }) => {
         {cast.map((actor) => (
           <Link
             key={actor.id}
-            to={`actordetail/${actor.name}/${actor.id}/${actor.credit_id}`}
+            to={`/actordetail/${actor.name}/${actor.id}/${actor.credit_id}/true`}
           >
             <div className="text-center hover:scale-105 transform transition-transform duration-300">
               <img

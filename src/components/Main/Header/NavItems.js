@@ -38,7 +38,7 @@ const NavItems = () => {
         to="/list"
         className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
       >
-        List
+        Popular People
       </Link>
       <Link
         to="/languages"

@@ -22,7 +22,7 @@ import DiscoverMovies from "./components/Main/DiscoverMovies";
 import DiscoverTvShows from "./components/Main/DiscovertvShows";
 import MovieTvList from "./components/Main/Genres";
 import ListPage from "./components/Main/List/ListPage";
-
+import PopularPeopleList from "./components/Main/PopularPeopleList";
 
 const appRouter = createBrowserRouter([
   {
@@ -39,7 +39,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "list",
-        element: <ListPage />,
+        element: <PopularPeopleList />,
       },
       {
         path: "discovermovies",
@@ -86,7 +86,7 @@ const appRouter = createBrowserRouter([
         element: <MovieImages />,
       },
       {
-        path: "browse/moviedetail/:movieId/actordetail/:actorName/:actorId/:actorCreditId",
+        path: "actordetail/:actorName/:actorId/:actorCreditId/:useCreditId",
         element: <ActorDetail />,
       },
       {

@@ -22,9 +22,9 @@ const HeroSection = ({
   videoPageUrl,
   movieId,
 }) => (
-  <div>
+  <div className="relative bg-gray-900">
     <div
-      className="relative h-[80vh] bg-cover bg-center"
+      className="relative h-[80vh] bg-cover bg-center mt-8"
       style={{
         backgroundImage: `url(${TMDB_IMG_BASE_URL}${backdrop_path})`,
       }}

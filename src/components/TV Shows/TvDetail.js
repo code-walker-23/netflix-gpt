@@ -1,27 +1,44 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useFetchTvDetail } from "../../hooks/useFetchTvDetail";
 import "tailwindcss/tailwind.css";
 import ShimmerEffect from "../../utils/Shimmer";
+import TvSeriesCredit from "./TvSeriesCredit";
+import TvSeriesRecommendation from "./TvSeriesRecommendation";
+import TvSeriesSimilar from "./TvSeriesSimilar";
 
 const TvDetail = () => {
   const { tvId } = useParams();
   const [tvDetail, setTvDetail] = React.useState({});
   const { loading, error } = useFetchTvDetail(tvId, setTvDetail);
-  console.log(tvDetail);
 
-  if (loading)
+  const productionRef = useRef(null);
+  const seasonsRef = useRef(null);
+  const recommendationRef = useRef(null);
+  const similarRef = useRef(null);
+  const creditsRef = useRef(null);
+
+  const scrollToSection = (sectionRef) => {
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  if (loading) {
     return (
       <div className="text-center text-white mt-20">
         <ShimmerEffect />
       </div>
     );
-  if (error || !tvDetail.name)
+  }
+
+  if (error || !tvDetail.name) {
     return (
       <div className="text-center text-red-500 mt-20">
         Error loading details
       </div>
     );
+  }
 
   const {
     backdrop_path,
@@ -40,10 +57,8 @@ const TvDetail = () => {
     spoken_languages = [],
   } = tvDetail;
 
-  console.log(seasons);
-
   return (
-    <div className="relative bg-gray-900 min-h-screen pt-20">
+    <div className="bg-gray-900 text-white min-h-screen pt-20">
       {/* Hero Section */}
       <div className="relative">
         <img
@@ -78,7 +93,7 @@ const TvDetail = () => {
               </p>
               <p>
                 <strong>Rating:</strong>{" "}
-                {vote_average !== undefined ? vote_average : "N/A"}
+                {vote_average !== undefined ? vote_average.toFixed(1) : "N/A"}
               </p>
             </div>
             {homepage && (
@@ -95,79 +110,134 @@ const TvDetail = () => {
         </div>
       </div>
 
+      {/* Navigation Buttons */}
+      <div className="py-5 px-5 lg:px-20 bg-gray-800">
+        <div className="max-w-4xl mx-auto flex justify-around mb-10">
+          <button
+            onClick={() => scrollToSection(productionRef)}
+            className="px-4 py-2 bg-red-600 text-white rounded-lg shadow-lg hover:bg-red-700 transition-transform transform hover:scale-105"
+          >
+            Production Details
+          </button>
+          <button
+            onClick={() => scrollToSection(seasonsRef)}
+            className="px-4 py-2 bg-red-600 text-white rounded-lg shadow-lg hover:bg-red-700 transition-transform transform hover:scale-105"
+          >
+            Seasons
+          </button>
+          <button
+            onClick={() => scrollToSection(recommendationRef)}
+            className="px-4 py-2 bg-red-600 text-white rounded-lg shadow-lg hover:bg-red-700 transition-transform transform hover:scale-105"
+          >
+            Recommendations
+          </button>
+          <button
+            onClick={() => scrollToSection(similarRef)}
+            className="px-4 py-2 bg-red-600 text-white rounded-lg shadow-lg hover:bg-red-700 transition-transform transform hover:scale-105"
+          >
+            Similar Shows
+          </button>
+          <button
+            onClick={() => scrollToSection(creditsRef)}
+            className="px-4 py-2 bg-red-600 text-white rounded-lg shadow-lg hover:bg-red-700 transition-transform transform hover:scale-105"
+          >
+            Cast & Crew
+          </button>
+        </div>
+      </div>
+
       {/* Production Details */}
-      <div className="py-10 px-5 lg:px-20 bg-gray-800 text-white">
-        <h2 className="text-3xl font-bold mb-6">Production Details</h2>
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold mb-2">Production Companies</h3>
-          <div className="flex flex-wrap gap-4">
-            {production_companies.length > 0 ? (
-              production_companies.map((company) => (
-                <div key={company.id} className="flex items-center space-x-2">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${company.logo_path}`}
-                    alt={company.name}
-                    className="w-24 h-10 object-contain"
-                  />
-                  <p>{company.name}</p>
-                </div>
-              ))
-            ) : (
-              <p>No production companies available.</p>
-            )}
+      <div ref={productionRef} className="py-10 px-5 lg:px-20 bg-gray-800">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6">Production Details</h2>
+          <div className="bg-gray-700 p-6 rounded-lg shadow-lg mb-6">
+            <h3 className="text-xl font-semibold mb-4">Production Companies</h3>
+            <div className="flex flex-wrap gap-4">
+              {production_companies.length > 0 ? (
+                production_companies.map((company) => (
+                  <div key={company.id} className="flex items-center space-x-2">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500${company.logo_path}`}
+                      alt={company.name}
+                      className="w-24 h-10 object-contain"
+                    />
+                    <p>{company.name}</p>
+                  </div>
+                ))
+              ) : (
+                <p>No production companies available.</p>
+              )}
+            </div>
           </div>
-        </div>
 
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold mb-2">Production Countries</h3>
-          <p>
-            {production_countries.length > 0
-              ? production_countries.map((country) => country.name).join(", ")
-              : "N/A"}
-          </p>
-        </div>
+          <div className="bg-gray-700 p-6 rounded-lg shadow-lg mb-6">
+            <h3 className="text-xl font-semibold mb-4">Production Countries</h3>
+            <p>
+              {production_countries.length > 0
+                ? production_countries.map((country) => country.name).join(", ")
+                : "N/A"}
+            </p>
+          </div>
 
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold mb-2">Languages</h3>
-          <p>
-            {spoken_languages.length > 0
-              ? spoken_languages.map((lang) => lang.english_name).join(", ")
-              : "N/A"}
-          </p>
+          <div className="bg-gray-700 p-6 rounded-lg shadow-lg mb-6">
+            <h3 className="text-xl font-semibold mb-4">Languages</h3>
+            <p>
+              {spoken_languages.length > 0
+                ? spoken_languages.map((lang) => lang.english_name).join(", ")
+                : "N/A"}
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Seasons Section */}
-      <div className="py-10 px-5 lg:px-20 bg-gray-800 text-white">
-        <h2 className="text-3xl font-bold mb-6">Seasons</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {seasons.length > 0 ? (
-            seasons.map((season) => (
-              <Link
-                to={`/browse/tvdetail/${tvId}/season/${season.season_number}`}
-                key={season.id}
-                className="bg-gray-700 p-4 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105"
-              >
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
-                  alt={`Season ${season.season_number}`}
-                  className="w-full h-32 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-xl font-semibold mb-2">
-                  Season {season.season_number}
-                </h3>
-                <p className="text-gray-300">
-                  Episodes: {season.episode_count}
-                </p>
-                <p className="text-gray-300">
-                  Rating: {season.vote_average || "N/A"}
-                </p>
-              </Link>
-            ))
-          ) : (
-            <p>No seasons available.</p>
-          )}
+      <div ref={seasonsRef} className="py-10 px-5 lg:px-20 bg-gray-800">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6">Seasons</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {seasons.length > 0 ? (
+              seasons.map((season) => (
+                <Link
+                  to={`/browse/tvdetail/${tvId}/season/${season.season_number}`}
+                  key={season.id}
+                  className="bg-gray-700 p-4 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105"
+                >
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
+                    alt={`Season ${season.season_number}`}
+                    className="w-full h-32 object-cover rounded-lg mb-4"
+                  />
+                  <h3 className="text-xl font-semibold mb-2">
+                    Season {season.season_number}
+                  </h3>
+                  <p className="text-gray-300">
+                    Episodes: {season.episode_count}
+                  </p>
+                  <p className="text-gray-300">
+                    Rating: {season.vote_average || "N/A"}
+                  </p>
+                </Link>
+              ))
+            ) : (
+              <p>No seasons available.</p>
+            )}
+          </div>
         </div>
+      </div>
+
+      {/* Recommendations Section */}
+      <div ref={recommendationRef} className="py-10 px-5 lg:px-20 bg-gray-800">
+        <TvSeriesRecommendation tvId={tvId} />
+      </div>
+
+      {/* Similar Shows Section */}
+      <div ref={similarRef} className="py-10 px-5 lg:px-20 bg-gray-800">
+        <TvSeriesSimilar tvId={tvId} />
+      </div>
+
+      {/* Cast & Crew Section */}
+      <div ref={creditsRef} className="py-10 px-5 lg:px-20 bg-gray-800">
+        <TvSeriesCredit tvId={tvId} />
       </div>
     </div>
   );
