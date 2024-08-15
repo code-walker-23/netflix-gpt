@@ -1,12 +1,10 @@
-// App.js
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./components/Main/Header/Header";
-import Footer from "./components/Main/Footer";
+import Header from "./Pages/Header";
+import Footer from "./Pages/Footer";
 import useAuthStateChange from "./hooks/useAuthStateChange";
 import { useSelector } from "react-redux";
-import GptSearch from "./components/Gpt/GptSearchPage";
-import { ToastContainer } from "react-toastify";
+import GptSearch from "./Pages/GptSearchToggle";
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -15,9 +13,7 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <main>
-        {user.email && showGpt ? <GptSearch /> : <Outlet />}
-      </main>
+      <main>{user.email && showGpt ? <GptSearch /> : <Outlet />}</main>
       <Footer />
     </div>
   );
