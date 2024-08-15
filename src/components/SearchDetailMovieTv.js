@@ -41,8 +41,8 @@ const SearchPage = ({ type }) => {
             value={selectedLanguage}
             className="p-4 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 transition w-full md:w-1/5"
           >
-            {LANGUAGE_OPTIONS.map(({ code, label }) => (
-              <option key={code} value={code}>
+            {LANGUAGE_OPTIONS.map(({ code, label },index) => (
+              <option key={index} value={code}>
                 {label}
               </option>
             ))}

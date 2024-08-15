@@ -21,10 +21,6 @@ export const handleSignUp = async ({
         displayName: `${firstName} ${lastName}`,
       });
 
-      // Optionally, you can log the updated profile information to verify
-      console.log("Updated profile:", {
-        displayName: user.displayName,
-      });
     } else {
       throw new Error("User creation failed");
     }

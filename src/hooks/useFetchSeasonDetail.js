@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { options } from "../utils/constant";
 
 const useFetchSeasonDetail = (tvId, seasonId, setEpisodes) => {
-  console.log(tvId, seasonId, "tvId, seasonId");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 

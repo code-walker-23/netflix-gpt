@@ -9,7 +9,6 @@ const Profile = () => {
   const { displayName, email, imgUrl } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const showUpdate = useSelector((state) => state.userUpdate.showUpdate);
-  console.log(showUpdate);
 
   const handleUpdateProfile = () => {
     dispatch(toggleUpdate());

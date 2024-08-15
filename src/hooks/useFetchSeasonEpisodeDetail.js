@@ -4,7 +4,6 @@ import { options } from "../utils/constant";
 const useFetchSeasonEpisodeDetail = (tvId, seasonId, episodeNumber,setEpisodeDetail ) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log(tvId, seasonId, episodeNumber, "tvId, seasonId, episodeNumber");
 
   const fetchDetail = async () => {
     setLoading(true);

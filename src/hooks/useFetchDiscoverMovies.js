@@ -18,7 +18,6 @@ const useFetchDiscoverMovies = (setDiscoverMovies) => {
       }
       const data = await response.json();
       setDiscoverMovies(data.results); // Set credit details
-      console.log(data);
     } catch (error) {
       setError(error.message);
     } finally {

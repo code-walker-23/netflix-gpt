@@ -22,11 +22,16 @@ const HeroSection = ({
   videoPageUrl,
   movieId,
 }) => (
-  <div className="relative bg-gray-900">
+  <div className="relative bg-gray-900 overflow-hidden">
+    {/* Dark margin area for header */}
+    <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-gray-900 to-transparent z-10" />
+
+    {/* Hero Section */}
     <div
-      className="relative h-[80vh] bg-cover bg-center mt-8"
+      className="relative h-[80vh] bg-cover bg-center"
       style={{
         backgroundImage: `url(${TMDB_IMG_BASE_URL}${backdrop_path})`,
+        marginTop: "5rem", // Adjust based on header height
       }}
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
@@ -43,7 +48,7 @@ const HeroSection = ({
 
         {/* Text Content */}
         <div className="mt-6 md:mt-0 md:ml-6 lg:ml-8 max-w-lg text-center md:text-left flex flex-col justify-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 mt-">
             {title}
           </h1>
           <p className="text-base md:text-lg mb-2">

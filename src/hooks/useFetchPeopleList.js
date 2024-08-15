@@ -11,7 +11,6 @@ const useFetchPeopleList = (setPeople) => {
       );
       const data = await response.json();
       setPeople(data.results);
-      console.log(data.results);
       setLoading(false);
     } catch (error) {
       setError(error.message);

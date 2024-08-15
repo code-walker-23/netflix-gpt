@@ -8,7 +8,6 @@ import "tailwindcss/tailwind.css";
 const Trending = () => {
   const [trending, setTrending] = useState([]);
   const { loading, error } = useFetchTrending(setTrending);
-  console.log(trending);
 
   return (
     <div className="min-h-screen bg-gray-800 text-white">

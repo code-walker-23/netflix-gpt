@@ -13,15 +13,14 @@ import VideoPage from "./Pages/MovieVideo";
 import Profile from "./Pages/Profile";
 import MovieImages from "./Pages/MovieImages";
 import { ActorDetail } from "./Pages/ActorDetail";
-import TvDetail from "./Pages/TvDetail";
+import TvDetail from "./Pages/TvSeriesDetail";
 import Trending from "./Pages/Trending";
-import TvSeasonDetail from "./components/TvSeason/TvSeasonDetail";
-import TvSeasonEpisodeDetail from "./components/TvSeasonEpisode/TvSeasonEpisodeDetail";
+import TvSeasonDetail from "./Pages/TvSeasonDetail";
+import TvSeasonEpisodeDetail from "./Pages/TvSeasonEpisodeDetail";
 import DiscoverMovies from "./Pages/DiscoverMovies";
 import DiscoverTvShows from "./Pages/DiscovertvShows";
 import MovieTvList from "./Pages/Genres";
 import PopularPeopleList from "./Pages/PopularPeopleList";
-import Search from "./components/SearchDetailMovieTv";
 
 const appRouter = createBrowserRouter([
   {

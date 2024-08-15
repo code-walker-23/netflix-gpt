@@ -4,7 +4,6 @@ import { options } from "../utils/constant";
 const useFetchCreditDetail = (creditId, setCreditDetail) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log(creditId);
   const fetchDetail = async () => {
     setLoading(true);
     setError(null);
@@ -19,7 +18,6 @@ const useFetchCreditDetail = (creditId, setCreditDetail) => {
       }
       const data = await response.json();
       setCreditDetail(data); // Set credit details
-      console.log(data);
     } catch (error) {
       setError(error.message);
     } finally {
