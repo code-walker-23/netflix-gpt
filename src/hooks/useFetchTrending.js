@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { options } from "../utils/constant";
+import { options } from "../utils/constant"; 
 
-const useFetchTrending = (setTrending) => {
+const useFetchTrending = (setTrending, time, type, language) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -10,16 +10,17 @@ const useFetchTrending = (setTrending) => {
     setError(null);
     try {
       const response = await fetch(
-        "https://api.themoviedb.org/3/trending/all/day?language=en-US",
+        `https://api.themoviedb.org/3/trending/${type}/${time}?language=${language}`,
         options
       );
       if (!response.ok) {
-        throw new Error("Failed to fetch trending");
+        throw new Error(`Failed to fetch trending: ${response.statusText}`);
       }
       const data = await response.json();
-      setTrending(data.results);
+      setTrending(data.results); // Ensure data.results is correct
+      console.log(data.results, "Fetched Data");
     } catch (error) {
-      setError(error.message);
+      setError(`Error: ${error.message}`); // Provide a clear error message
     } finally {
       setLoading(false);
     }
@@ -27,8 +28,7 @@ const useFetchTrending = (setTrending) => {
 
   useEffect(() => {
     fetchDetail();
-  }, []);
-
+  }, [time, type, language]); 
   return { loading, error };
 };
 

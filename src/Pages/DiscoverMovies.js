@@ -16,17 +16,19 @@ const DiscoverMovies = () => {
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen py-12 px-4">
-      <div className="max-w-6xl mx-auto mt-20">
-        <div className="flex items-center justify-between mb-8 ">
-          <button
-            onClick={handleScrollToSearch}
-            className="p-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105"
-          >
-            Go to Search
-          </button>
-        </div>
+    <div className="bg-gray-900 min-h-screen py-12 px-6 flex flex-col items-center">
+      {/* Button to Scroll to Search */}
+      <div className="mb-8 mt-14">
+        <button
+          onClick={handleScrollToSearch}
+          className="p-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105"
+        >
+          Go to Search
+        </button>
+      </div>
 
+      {/* Main Card */}
+      <div className="w-full max-w-6xl bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700">
         {loading && (
           <div className="flex justify-center items-center h-64">
             <ShimmerEffect />
@@ -40,7 +42,7 @@ const DiscoverMovies = () => {
         )}
 
         {!loading && !error && (
-          <div className="mt-8">
+          <div>
             <MovieList
               list={discoverMovies}
               title="Popular Movies"
@@ -50,7 +52,8 @@ const DiscoverMovies = () => {
         )}
       </div>
 
-      <div ref={searchRef}>
+      {/* Search Component */}
+      <div ref={searchRef} className="mt-12 w-full max-w-6xl">
         <Search type={"movie"} />
       </div>
     </div>

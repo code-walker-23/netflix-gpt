@@ -39,19 +39,20 @@ const MovieList = ({ title, list, type }) => {
           style={{ scrollBehavior: "smooth" }}
         >
           {list &&
-            list.map((movie) => (
-              <Link
-                to={
-                  type == (movie.media_type ? movie.media_type : "movie")
-                    ? `/browse/moviedetail/${movie.id}`
-                    : `/browse/tvdetail/${movie.id}`
-                }
-                key={movie.id}
-                target="_blank"
-              >
-                <MovieCards movie={movie} />
-              </Link>
-            ))}
+            list.map((movie) => {
+              const mediaType = movie.media_type || type;
+
+              const url =
+                mediaType === "movie"
+                  ? `/browse/moviedetail/${movie.id}`
+                  : `/browse/tvdetail/${movie.id}`;
+
+              return (
+                <Link to={url} key={movie.id}>
+                  <MovieCards movie={movie} />
+                </Link>
+              );
+            })}
         </div>
 
         {/* Right Scroll Button */}

@@ -1,37 +1,54 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import useFetchTrending from "../hooks/useFetchTrending";
-import ShimmerEffect from "../utils/Shimmer";
 import MovieList from "../components/SecondaryPage/MovieList";
-import "tailwindcss/tailwind.css";
+import PeopleList from "../components/PopularPeople/PeopleList";
+import TrendingSelectors from "../components/Trending/TrendingSelectors";
+import TrendingLoadingError from "../components/Trending/TrendingLoadingError";
 
 const Trending = () => {
   const [trending, setTrending] = useState([]);
-  const { loading, error } = useFetchTrending(setTrending);
+  const [time, setTime] = useState("week");
+  const [type, setType] = useState("movie");
+  const [language, setLanguage] = useState("en");
+
+  const { loading, error } = useFetchTrending(setTrending, time, type, language);
+
+  const handleTimeChange = (selectedOption) => setTime(selectedOption.value);
+  const handleTypeChange = (selectedOption) => setType(selectedOption.value);
+  const handleLanguageChange = (selectedOption) => setLanguage(selectedOption.value);
 
   return (
-    <div className="min-h-screen bg-gray-800 text-white">
-      {/* Header Section */}
-      <header className="bg-gray-900 py-6">
-        <h1 className="text-3xl lg:text-5xl font-bold text-center mt-20">
-          Trending Now
+    <div className="bg-gray-900 min-h-screen py-16 px-6 flex flex-col items-center">
+      <div className="w-full max-w-screen-xl bg-gray-800 p-10 rounded-lg shadow-lg border border-gray-700 mt-7">
+        <h1 className="text-4xl font-extrabold text-white mb-8 text-center">
+          Trending {type === "person" ? "People" : type === "tv" ? "TV Shows" : "Movies"}
         </h1>
-      </header>
 
-      {/* Loading and Error States */}
-      <main className="p-6 lg:p-12">
-        {loading && <ShimmerEffect />}
-        {error && (
-          <div className="text-center text-red-500 text-lg mt-4">
-            Error loading trending movies. Please try again later.
-          </div>
-        )}
+        <TrendingSelectors
+          type={type}
+          time={time}
+          language={language}
+          onTypeChange={handleTypeChange}
+          onTimeChange={handleTimeChange}
+          onLanguageChange={handleLanguageChange}
+        />
+
+        <TrendingLoadingError loading={loading} error={error} />
+
         {!loading && !error && (
-          <div className="mt-4">
-            <MovieList title="New and Popular" list={trending} type={"movie"} />
+          <div>
+            {type === "person" ? (
+              <PeopleList popularPeopleList={trending} />
+            ) : (
+              <MovieList
+                list={trending}
+                title={`Trending ${type.charAt(0).toUpperCase() + type.slice(1)}`}
+                type={type}
+              />
+            )}
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 };

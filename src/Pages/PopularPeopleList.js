@@ -29,10 +29,8 @@ const PopularPeopleList = () => {
   return (
     <div className="bg-gray-900 min-h-screen text-white">
       <div className="container mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-8 mt-20">
-          <h1 className="text-5xl font-bold text-white mb-4 md:mb-0">
-            {!showSearch ? "Popular People" : "Search People"}
-          </h1>
+        {/* Toggle Button */}
+        <div className="flex justify-center mb-8 mt-16">
           <button
             onClick={toggleSearchSection}
             className="px-6 py-3 bg-red-600 border border-red-700 rounded-lg text-white hover:bg-red-700 transition-transform transform hover:scale-105 shadow-lg"
@@ -41,28 +39,33 @@ const PopularPeopleList = () => {
           </button>
         </div>
 
-        {!showSearch && (
+        {!showSearch ? (
           <>
-            {/* Pagination Controls */}
-            <div className="flex justify-center items-center mb-8 gap-4">
-              <button
-                onClick={handlePreviousPage}
-                disabled={pageNumber === 1}
-                className={`px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105 shadow-lg ${
-                  pageNumber === 1 ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-              >
-                Previous
-              </button>
-              <span className="text-lg text-white font-semibold">
-                Page {pageNumber}
-              </span>
-              <button
-                onClick={handleNextPage}
-                className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105 shadow-lg"
-              >
-                Next
-              </button>
+            {/* Heading and Pagination Controls */}
+            <div className="flex flex-col md:flex-row items-center justify-between mb-8">
+              <h1 className="text-5xl font-bold text-white mb-4 md:mb-0">
+                Popular People
+              </h1>
+              <div className="flex gap-4">
+                <button
+                  onClick={handlePreviousPage}
+                  disabled={pageNumber === 1}
+                  className={`px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105 shadow-lg ${
+                    pageNumber === 1 ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  Previous
+                </button>
+                <span className="text-lg text-white font-semibold">
+                  Page {pageNumber}
+                </span>
+                <button
+                  onClick={handleNextPage}
+                  className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105 shadow-lg"
+                >
+                  Next
+                </button>
+              </div>
             </div>
 
             {/* Loading and Error States */}
@@ -74,9 +77,7 @@ const PopularPeopleList = () => {
 
             {error && (
               <div className="flex justify-center items-center h-64">
-                <p className="text-center text-red-500 text-lg">
-                  Error loading data
-                </p>
+                <p className="text-center text-red-500 text-lg">Error loading data</p>
               </div>
             )}
 
@@ -87,9 +88,7 @@ const PopularPeopleList = () => {
               </div>
             )}
           </>
-        )}
-
-        {showSearch && (
+        ) : (
           <div className="bg-gray-800 py-12 border-t border-gray-700">
             <div className="container mx-auto px-6">
               <SearchPeopleDetail />
