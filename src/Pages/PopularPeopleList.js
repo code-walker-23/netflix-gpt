@@ -30,7 +30,7 @@ const PopularPeopleList = () => {
     <div className="bg-gray-900 min-h-screen text-white">
       <div className="container mx-auto px-6 py-12">
         {/* Toggle Button */}
-        <div className="flex justify-center mb-8 mt-16">
+        <div className="flex justify-center mb-4 mt-12">
           <button
             onClick={toggleSearchSection}
             className="px-6 py-3 bg-red-600 border border-red-700 rounded-lg text-white hover:bg-red-700 transition-transform transform hover:scale-105 shadow-lg"
@@ -77,7 +77,9 @@ const PopularPeopleList = () => {
 
             {error && (
               <div className="flex justify-center items-center h-64">
-                <p className="text-center text-red-500 text-lg">Error loading data</p>
+                <p className="text-center text-red-500 text-lg">
+                  Error loading data
+                </p>
               </div>
             )}
 
@@ -89,11 +91,7 @@ const PopularPeopleList = () => {
             )}
           </>
         ) : (
-          <div className="bg-gray-800 py-12 border-t border-gray-700">
-            <div className="container mx-auto px-6">
-              <SearchPeopleDetail />
-            </div>
-          </div>
+          <SearchPeopleDetail />
         )}
       </div>
     </div>

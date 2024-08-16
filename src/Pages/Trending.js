@@ -11,17 +11,23 @@ const Trending = () => {
   const [type, setType] = useState("movie");
   const [language, setLanguage] = useState("en");
 
-  const { loading, error } = useFetchTrending(setTrending, time, type, language);
+  const { loading, error } = useFetchTrending(
+    setTrending,
+    time,
+    type,
+    language
+  );
 
   const handleTimeChange = (selectedOption) => setTime(selectedOption.value);
   const handleTypeChange = (selectedOption) => setType(selectedOption.value);
-  const handleLanguageChange = (selectedOption) => setLanguage(selectedOption.value);
+  const handleLanguageChange = (selectedOption) =>
+    setLanguage(selectedOption.value);
 
   return (
     <div className="bg-gray-900 min-h-screen py-16 px-6 flex flex-col items-center">
-      <div className="w-full max-w-screen-xl bg-gray-800 p-10 rounded-lg shadow-lg border border-gray-700 mt-7">
+      <div className="w-full max-w-screen-xl bg-gray-900 mt-7">
         <h1 className="text-4xl font-extrabold text-white mb-8 text-center">
-          Trending {type === "person" ? "People" : type === "tv" ? "TV Shows" : "Movies"}
+          Trending
         </h1>
 
         <TrendingSelectors
@@ -42,7 +48,9 @@ const Trending = () => {
             ) : (
               <MovieList
                 list={trending}
-                title={`Trending ${type.charAt(0).toUpperCase() + type.slice(1)}`}
+                title={`Trending ${
+                  type.charAt(0).toUpperCase() + type.slice(1)
+                }`}
                 type={type}
               />
             )}
