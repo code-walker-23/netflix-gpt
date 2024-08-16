@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import LeftCard from "./LeftCard";
 import RightCard from "./RightCard";
-const MovieDetailsCard = ({
+const MovieDetailsContainer = ({
   release_date,
   status,
   tagline,
@@ -52,4 +52,4 @@ const MovieDetailsCard = ({
   </motion.div>
 );
 
-export default MovieDetailsCard;
+export default MovieDetailsContainer;

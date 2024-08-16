@@ -4,7 +4,7 @@ import { toggleGptView } from "../../utils/Slices/gpt/gptToggleSlice";
 
 export const toggle = ({ setShowDropDown, userIconRef, dropdownRef }) => {
   const dispatch = useDispatch();
-  // Toggle dropdown
+ 
   const toggleDropDown = () => {
     setShowDropDown((prev) => !prev);
   };

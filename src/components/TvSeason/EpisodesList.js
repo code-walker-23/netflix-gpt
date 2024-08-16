@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
 
 const Episodes = ({
   episodes,
@@ -15,7 +16,7 @@ const Episodes = ({
     >
       <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-transform hover:scale-105 hover:shadow-xl">
         <img
-          src={`https://image.tmdb.org/t/p/w500${episode.still_path}`}
+          src={`${TMDB_IMG_BASE_URL_500}${episode.still_path}`}
           alt={`Episode ${episode.episode_number}`}
           className="w-full h-48 object-cover"
         />

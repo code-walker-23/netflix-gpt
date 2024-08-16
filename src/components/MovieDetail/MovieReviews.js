@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import useFetchMovieReviews from "../../hooks/useFetchMovieReviews";
-import 'tailwindcss/tailwind.css'; // Ensure Tailwind CSS is imported
+import ShimmerEffect from "../../utils/Shimmer";
 
 const MovieReviews = ({ movieId }) => {
   const [movieReviews, setMovieReviews] = React.useState([]);
-  const [showReviews, setShowReviews] = useState(true); // State to control review visibility
+  const [showReviews, setShowReviews] = useState(true);
   const { loading, error } = useFetchMovieReviews(setMovieReviews, movieId);
 
   const handleToggle = () => {
-    setShowReviews(prevState => !prevState);
+    setShowReviews((prevState) => !prevState);
   };
 
   if (loading) {
     return (
       <div className="py-12 px-5 lg:px-20 bg-gray-900">
         <div className="max-w-6xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
-          <p className="text-center text-xl font-semibold text-gray-400">Loading...</p>
+          <p className="text-center text-xl font-semibold text-gray-400">
+            <ShimmerEffect />
+          </p>
         </div>
       </div>
     );
@@ -25,7 +27,9 @@ const MovieReviews = ({ movieId }) => {
     return (
       <div className="py-12 px-5 lg:px-20 bg-gray-900">
         <div className="max-w-6xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
-          <p className="text-center text-xl font-semibold text-red-500">Error: {error.message}</p>
+          <p className="text-center text-xl font-semibold text-red-500">
+            Error: {error.message}
+          </p>
         </div>
       </div>
     );
@@ -41,7 +45,7 @@ const MovieReviews = ({ movieId }) => {
             onClick={handleToggle}
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
           >
-            {showReviews ? 'Hide Reviews' : 'Show Reviews'}
+            {showReviews ? "Hide Reviews" : "Show Reviews"}
           </button>
         </div>
 
@@ -50,7 +54,9 @@ const MovieReviews = ({ movieId }) => {
           <div className="space-y-6">
             {movieReviews.length === 0 ? (
               <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
-                <p className="text-center text-lg text-gray-400">No reviews available.</p>
+                <p className="text-center text-lg text-gray-400">
+                  No reviews available.
+                </p>
               </div>
             ) : (
               movieReviews.map((review) => (
@@ -66,8 +72,12 @@ const MovieReviews = ({ movieId }) => {
                     />
                   )}
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-100">{review.author_details.username}</h3>
-                    <div className="text-sm text-gray-400">Rating: {review.author_details.rating}</div>
+                    <h3 className="text-lg font-semibold text-gray-100">
+                      {review.author_details.username}
+                    </h3>
+                    <div className="text-sm text-gray-400">
+                      Rating: {review.author_details.rating}
+                    </div>
                     <p className="mt-2 text-gray-300">{review.content}</p>
                     {review.url && (
                       <a

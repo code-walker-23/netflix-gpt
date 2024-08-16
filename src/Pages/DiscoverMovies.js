@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import useFetchDiscoverMovies from "../hooks/useFetchDiscoverMovies";
 import MovieList from "../components/SecondaryPage/MovieList";
 import ShimmerEffect from "../utils/Shimmer";
@@ -7,55 +7,52 @@ import Search from "../components/SearchDetailMovieTv";
 const DiscoverMovies = () => {
   const [discoverMovies, setDiscoverMovies] = React.useState([]);
   const { loading, error } = useFetchDiscoverMovies(setDiscoverMovies);
-
-  const searchRef = useRef(null);
-  const handleScrollToSearch = () => {
-    if (searchRef.current) {
-      searchRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const [showSearch, setShowSearch] = React.useState(false);
 
   return (
-    <div className="bg-gray-900 min-h-screen py-12 px-6 flex flex-col items-center">
-      {/* Button to Scroll to Search */}
-      <div className="mb-8 mt-14">
+    <div className="bg-gray-900 min-h-screen py-8 px-6 flex flex-col items-center">
+      <div className=" mt-14">
         <button
-          onClick={handleScrollToSearch}
+          onClick={() => setShowSearch(!showSearch)}
           className="p-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105"
         >
-          Go to Search
+          {showSearch ? "Popular Movies" : "Search Movies"}
         </button>
       </div>
 
       {/* Main Card */}
-      <div className="w-full max-w-6xl bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700">
-        {loading && (
-          <div className="flex justify-center items-center h-64">
-            <ShimmerEffect />
-          </div>
-        )}
+      {!showSearch && (
+        <div className="w-full max-w-9xl bg-gray-900 p-8 mt-3">
+          {loading && (
+            <div className="flex justify-center items-center h-64">
+              <ShimmerEffect />
+            </div>
+          )}
 
-        {error && (
-          <div className="flex justify-center items-center h-64">
-            <p className="text-red-500 text-lg">Error: {error}</p>
-          </div>
-        )}
+          {error && (
+            <div className="flex justify-center items-center h-64">
+              <p className="text-red-500 text-lg">Error: {error}</p>
+            </div>
+          )}
 
-        {!loading && !error && (
-          <div>
-            <MovieList
-              list={discoverMovies}
-              title="Popular Movies"
-              type={"movie"}
-            />
-          </div>
-        )}
-      </div>
+          {!loading && !error && (
+            <div>
+              <MovieList
+                list={discoverMovies}
+                title="Popular Movies"
+                type={"movie"}
+              />
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Search Component */}
-      <div ref={searchRef} className="mt-12 w-full max-w-6xl">
-        <Search type={"movie"} />
-      </div>
+      {showSearch && (
+        <div className=" w-full max-w-9xl">
+          <Search type={"movie"} />
+        </div>
+      )}
     </div>
   );
 };

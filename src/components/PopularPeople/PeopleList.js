@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MovieList from "../SecondaryPage/MovieList";
+import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
 
 const PeopleList = ({ popularPeopleList }) => {
   return (
@@ -15,7 +16,7 @@ const PeopleList = ({ popularPeopleList }) => {
               >
                 <Link to={`/actordetail/${person.name}/${person.id}/null/false`}>
                   <img
-                    src={`https://image.tmdb.org/t/p/w500${person.profile_path}`}
+                    src={`${TMDB_IMG_BASE_URL_500}${person.profile_path}`}
                     alt={person.name}
                     className="w-full h-80 object-cover transition-transform duration-300 ease-in-out hover:scale-110"
                   />

@@ -1,19 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
 
 const CreditDetail = ({ creditDetail }) => {
   const { media, person } = creditDetail;
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6 md:p-8">
-      <div className="max-w-4xl mx-auto bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
+      <div className="max-w-9xl mx-auto bg-gray-800 rounded-lg shadow-lg p-6 md:p-8"> 
         <h2 className="text-3xl font-bold text-white mb-6">Credit Detail</h2>
 
         <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
-          {/* Media Information */}
           <div className="flex-shrink-0 w-full md:w-1/3">
             <img
-              src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
+              src={`${TMDB_IMG_BASE_URL_500}${media.poster_path}`}
               alt={media.title}
               className="w-full h-96 object-cover rounded-lg border-2 border-gray-700"
             />
@@ -32,7 +32,7 @@ const CreditDetail = ({ creditDetail }) => {
 
             <div className="flex items-start md:items-center mb-6">
               <img
-                src={`https://image.tmdb.org/t/p/w500${person.profile_path}`}
+                src={`${TMDB_IMG_BASE_URL_500}${person.profile_path}`}
                 alt={person.name}
                 className="w-32 h-32 object-cover rounded-full border-2 border-gray-700 mr-4"
               />

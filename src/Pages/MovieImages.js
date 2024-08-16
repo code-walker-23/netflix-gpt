@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Masonry from "react-masonry-css";
 import "../components/MovieDetail/movieImages.css";
 import { options } from "../utils/constant";
+import { TMDB_IMG_BASE_URL } from "../utils/constant";
 
 const MovieImages = () => {
   const [movieImages, setMovieImages] = useState({
@@ -38,7 +39,7 @@ const MovieImages = () => {
           {movieImages.backdrops.map((image) => (
             <img
               key={image.file_path}
-              src={`https://image.tmdb.org/t/p/original${image.file_path}`}
+              src={`${TMDB_IMG_BASE_URL}${image.file_path}`}
               alt="Backdrop"
               className="image-item"
             />
@@ -55,7 +56,7 @@ const MovieImages = () => {
           {movieImages.posters.map((image) => (
             <img
               key={image.file_path}
-              src={`https://image.tmdb.org/t/p/original${image.file_path}`}
+              src={`${TMDB_IMG_BASE_URL}${image.file_path}`}
               alt="Poster"
               className="image-item"
             />
@@ -72,7 +73,7 @@ const MovieImages = () => {
           {movieImages.logos.map((image) => (
             <img
               key={image.file_path}
-              src={`https://image.tmdb.org/t/p/original${image.file_path}`}
+              src={`${TMDB_IMG_BASE_URL}${image.file_path}`}
               alt="Logo"
               className="image-item"
             />

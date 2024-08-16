@@ -1,4 +1,5 @@
 import React from "react";
+import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
 
 const Crew = ({ crew }) => {
   return (
@@ -16,7 +17,7 @@ const Crew = ({ crew }) => {
               <div className="flex-shrink-0">
                 {member.profile_path ? (
                   <img
-                    src={`https://image.tmdb.org/t/p/w500${member.profile_path}`}
+                    src={`${TMDB_IMG_BASE_URL_500}${member.profile_path}`}
                     alt={member.name}
                     className="w-20 h-20 object-cover rounded-full border-4 border-gradient-to-r from-teal-400 via-blue-500 to-purple-600"
                   />

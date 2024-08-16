@@ -19,7 +19,7 @@ const Buttons = ({
 }) => {
   return (
     <div className="py-12 px-5 lg:px-20 bg-gray-900">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-8xl mx-auto">
         {/* Main Card Container */}
         <div className="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700">
           <h2 className="text-3xl font-bold mb-6 text-white">Explore Sections</h2>

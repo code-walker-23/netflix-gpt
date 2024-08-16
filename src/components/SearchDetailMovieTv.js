@@ -21,14 +21,14 @@ const SearchPage = ({ type }) => {
 
   return (
     <div className="bg-gray-900 min-h-screen py-12 px-6 flex justify-center">
-      <div className="w-full max-w-6xl">
+      <div className="w-full max-w-9xl">
         {/* Main Card */}
-        <div className="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700">
-          <h1 className="text-4xl font-bold text-white mb-8 text-center">
+        <div className="bg-gray-900 p-8 ">
+          <h1 className="text-4xl font-bold text-white mb-8 text-center ">
             {type === "movie" ? "Movie Search" : "TV Show Search"}
           </h1>
 
-          <div className="bg-gray-700 p-6 rounded-lg mb-8">
+          <div className="bg-gray-800 p-6 rounded-lg mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">
               {type === "movie" ? "Search Movies" : "Search TV Shows"}
             </h2>
@@ -39,12 +39,12 @@ const SearchPage = ({ type }) => {
               }
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="p-4 border border-gray-600 rounded-lg bg-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 transition w-full mb-4"
+              className="p-4 border border-gray-600 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 transition w-full mb-4"
             />
             <select
               onChange={(e) => setSelectedLanguage(e.target.value)}
               value={selectedLanguage}
-              className="p-4 border border-gray-600 rounded-lg bg-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 transition w-full"
+              className="p-4 border border-gray-600 rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 transition w-full"
             >
               {LANGUAGE_OPTIONS.map(({ code, label }) => (
                 <option key={code} value={code}>

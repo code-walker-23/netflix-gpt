@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useFetchTvSeriesCredit } from "../../hooks/useFetchTvSeriesCredit";
 import { Link } from "react-router-dom";
+import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
 
 const TvSeriesCredit = ({ tvId }) => {
   const [tvSeriesCredit, setTvSeriesCredit] = React.useState([]);
@@ -35,13 +36,13 @@ const TvSeriesCredit = ({ tvId }) => {
 
   return (
     <div className="py-12 px-5 lg:px-20 bg-gray-900">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-8xl mx-auto">
         {/* Header Section */}
         <div className="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700 mb-8">
           <h1 className="text-3xl font-bold text-white">Cast Details</h1>
           <button
             onClick={handleToggle}
-            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
+            className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
           >
             {showCast ? 'Hide Cast Details' : 'Show Cast Details'}
           </button>
@@ -66,7 +67,7 @@ const TvSeriesCredit = ({ tvId }) => {
                     <div className="bg-gray-800 rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105 border border-gray-700">
                       <div className="flex flex-col items-center">
                         <img
-                          src={`https://image.tmdb.org/t/p/w500${member.profile_path}`}
+                          src={`${TMDB_IMG_BASE_URL_500}${member.profile_path}`}
                           alt={member.name}
                           className="w-32 h-32 object-cover rounded-full mb-4 border border-gray-600"
                         />

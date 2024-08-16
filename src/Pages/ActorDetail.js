@@ -15,7 +15,6 @@ export const ActorDetail = () => {
   const [tvShows, setTvShows] = useState([]);
   const [creditDetail, setCreditDetail] = useState(null);
 
-  // Fetch movies and TV shows
   const { loading: loadingMovies, error: errorMovies } = useFetchActorDetail(
     actorId,
     setMovies
@@ -33,7 +32,7 @@ export const ActorDetail = () => {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen p-6 md:p-12">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-9xl mx-auto">
         <h1 className="text-4xl font-bold mb-6 mt-12">
           {actorName}'s Filmography
         </h1>
@@ -52,17 +51,22 @@ export const ActorDetail = () => {
           <>
             <PeopleDetail actorId={actorId} />
             {creditDetail && <CreditDetail creditDetail={creditDetail} />}
+
             {movies.length > 0 && (
-              <MovieList title="Movies" list={movies} type={"movie"} />
+              <MovieList title="Movies" list={movies} type="movie" />
             )}
+
             {tvShows.length > 0 && (
-              <MovieList title="TV Shows" list={tvShows} type={"tv"} />
+              <MovieList title="TV Shows" list={tvShows} type="tv" />
             )}
+
+            {/* Fallback Message */}
             {movies.length === 0 && tvShows.length === 0 && (
               <div className="text-white text-center p-8">
                 No movies or TV shows found for {actorName}.
               </div>
             )}
+
             <PeopleImages actorId={actorId} />
           </>
         )}

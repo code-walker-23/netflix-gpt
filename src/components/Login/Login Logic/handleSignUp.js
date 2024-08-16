@@ -15,7 +15,7 @@ export const handleSignUp = async ({
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // Step 2: Set the display name for the newly created user
+    // Step 2: Update the user's display name
     if (user) {
       await updateProfile(user, {
         displayName: `${firstName} ${lastName}`,

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { TMDB_IMG_BASE_URL_300 } from "../../utils/constant";
 
 const CastList = ({ cast }) => {
   const [showCast, setShowCast] = useState(true);
@@ -33,7 +34,7 @@ const CastList = ({ cast }) => {
               >
                 <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
                   <img
-                    src={`https://image.tmdb.org/t/p/w300${actor.profile_path}`}
+                    src={`${TMDB_IMG_BASE_URL_300}${actor.profile_path}`}
                     alt={actor.name}
                     className="w-full h-80 object-cover"
                   />

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import useFetchPeopleDetail from "../../hooks/useFetchPeopleDetail";
+import ShimmerEffect from "../../utils/Shimmer";
+import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
 
 const PeopleDetail = ({ actorId }) => {
   const [peopleDetail, setPeopleDetail] = useState({});
@@ -9,7 +11,9 @@ const PeopleDetail = ({ actorId }) => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
-        <div className="text-lg">Loading...</div>
+        <div className="text-lg">
+          <ShimmerEffect/>
+        </div>
       </div>
     );
   }
@@ -34,10 +38,10 @@ const PeopleDetail = ({ actorId }) => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <div className="max-w-9xl mx-auto flex flex-col md:flex-row bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         <div className="w-full md:w-1/3 bg-gray-700 flex items-center justify-center">
           <img
-            src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+            src={`${TMDB_IMG_BASE_URL_500}${profile_path}`}
             alt={name}
             className="w-48 h-72 object-cover rounded-lg shadow-md"
           />

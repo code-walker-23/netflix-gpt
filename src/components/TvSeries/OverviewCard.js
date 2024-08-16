@@ -7,13 +7,13 @@ const OverviewCard = ({
   last_episode_to_air,
   next_episode_to_air,
 }) => {
-  // Safeguard for undefined or null
+ 
   const lastEpisodeAirDate = last_episode_to_air?.air_date || "N/A";
   const nextEpisodeAirDate = next_episode_to_air?.air_date || "N/A";
 
   return (
     <div className="py-12 px-5 lg:px-20 bg-gray-900">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-8xl mx-auto">
         {/* Card Wrapper */}
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
           <h2 className="text-3xl font-bold text-white mb-6">Overview</h2>

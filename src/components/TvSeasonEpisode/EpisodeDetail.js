@@ -1,4 +1,5 @@
 import React from "react";
+import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
 const EpisodeDetail = ({
   name,
   air_date,
@@ -12,7 +13,7 @@ const EpisodeDetail = ({
     <div className="bg-gray-800 rounded-lg shadow-lg p-6 mb-8 border border-gray-700 transition-transform transform hover:scale-105">
       <div className="flex flex-col lg:flex-row">
         <img
-          src={`https://image.tmdb.org/t/p/w500${still_path}`}
+          src={`${TMDB_IMG_BASE_URL_500}${still_path}`}
           alt={name}
           className="w-full lg:w-1/3 h-64 object-cover rounded-lg mb-4 lg:mb-0 lg:mr-6 border border-gray-600"
         />

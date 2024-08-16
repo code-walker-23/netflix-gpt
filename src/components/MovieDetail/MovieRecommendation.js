@@ -1,6 +1,7 @@
 import React from "react";
 import useFetchMovieRecommendations from "../../hooks/useFetchMovieRecommendations";
 import MovieList from "../SecondaryPage/MovieList";
+import ShimmerEffect from "../../utils/Shimmer";
 
 const MovieRecommendation = ({ movieId }) => {
   const [movieRecommendations, setMovieRecommendations] = React.useState([]);
@@ -12,7 +13,9 @@ const MovieRecommendation = ({ movieId }) => {
   if (loading) {
     return (
       <div className="p-8 text-center text-white">
-        <p>Loading recommendations...</p>
+        <p>
+          <ShimmerEffect />
+        </p>
       </div>
     );
   }
@@ -30,7 +33,7 @@ const MovieRecommendation = ({ movieId }) => {
       <h2 className="text-4xl font-bold text-white mb-6">Recommended Movies</h2>
       <MovieList
         list={movieRecommendations}
-        title={""}  // Assuming MovieList handles title internally
+        title={""} 
         type={"movie"}
       />
     </div>

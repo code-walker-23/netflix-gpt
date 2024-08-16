@@ -23,20 +23,16 @@ const HeroSection = ({
   movieId,
 }) => (
   <div className="relative bg-gray-900 overflow-hidden">
-    {/* Dark margin area for header */}
-    <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-gray-900 to-transparent z-10" />
-
-    {/* Hero Section */}
     <div
       className="relative h-[80vh] bg-cover bg-center"
       style={{
         backgroundImage: `url(${TMDB_IMG_BASE_URL}${backdrop_path})`,
-        marginTop: "5rem", // Adjust based on header height
+        marginTop: "5rem", 
       }}
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="relative flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start h-full p-6 md:p-12">
-        {/* Poster Image */}
+       
         <motion.img
           className="w-48 md:w-64 lg:w-80 rounded-lg shadow-2xl border-4 border-gray-800"
           src={`${TMDB_IMG_BASE_URL_500}${poster_path}`}

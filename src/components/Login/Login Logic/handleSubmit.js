@@ -14,7 +14,7 @@ export const handleSubmit = async (config) => {
     lastName,
   } = config;
 
-  // Validate input
+
   const validationError = checkValidData(email, password, firstName, lastName);
   if (validationError) {
     setErrorMessage(validationError);
@@ -27,7 +27,7 @@ export const handleSubmit = async (config) => {
     if (isSignInForm) {
       await handleSignIn({ email, password });
     } else {
-      await handleSignUp({ setIsSignForm, email, password, firstName, lastName });  // Include firstName and lastName
+      await handleSignUp({ setIsSignForm, email, password, firstName, lastName });
     }
   } catch (error) {
     toast.error(`Error: ${error.message}`, { position: "bottom-center" });

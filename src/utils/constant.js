@@ -63,6 +63,8 @@ export const getYouTubeTrailerUrl_MUTE = (youtubeKey) =>
 
 export const TMDB_IMG_BASE_URL = "https://image.tmdb.org/t/p/original";
 export const TMDB_IMG_BASE_URL_500 = "https://image.tmdb.org/t/p/w500";
+export const TMDB_IMG_BASE_URL_300 = "https://image.tmdb.org/t/p/w300";
+
 export const RATED_R_IMG =
   "https://cdn-icons-png.flaticon.com/128/2249/2249141.png";
 export const RATED_PG_IMG =

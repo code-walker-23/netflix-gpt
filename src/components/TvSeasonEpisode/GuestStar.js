@@ -1,4 +1,5 @@
 import React from "react";
+import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
 
 const GuestStar = ({ guest_stars }) => {
   return (
@@ -16,7 +17,7 @@ const GuestStar = ({ guest_stars }) => {
               <div className="flex-shrink-0">
                 {guest.profile_path ? (
                   <img
-                    src={`https://image.tmdb.org/t/p/w500${guest.profile_path}`}
+                    src={`${TMDB_IMG_BASE_URL_500}${guest.profile_path}`}
                     alt={guest.name}
                     className="w-20 h-20 object-cover rounded-full border-4 border-gradient-to-r from-teal-400 via-blue-500 to-purple-600"
                   />
