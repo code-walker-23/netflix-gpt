@@ -32,7 +32,7 @@ export const ActorDetail = () => {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen p-6 md:p-12">
-      <div className="max-w-9xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold mb-6 mt-12">
           {actorName}'s Filmography
         </h1>

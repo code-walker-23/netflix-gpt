@@ -17,8 +17,7 @@ const useFetchTrending = (setTrending, time, type, language) => {
         throw new Error(`Failed to fetch trending: ${response.statusText}`);
       }
       const data = await response.json();
-      setTrending(data.results); // Ensure data.results is correct
-      console.log(data.results, "Fetched Data");
+      setTrending(data.results);
     } catch (error) {
       setError(`Error: ${error.message}`); // Provide a clear error message
     } finally {
