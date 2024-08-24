@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./components/Header";
-import Footer from "./Pages/Footer";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer";
 import useAuthStateChange from "./hooks/useAuthStateChange";
 import { useSelector } from "react-redux";
 import GptSearch from "./Pages/GptSearchToggle";
