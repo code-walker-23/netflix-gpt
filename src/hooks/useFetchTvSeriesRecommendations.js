@@ -25,7 +25,7 @@ const useFetchTvSeriesRecommendations = (setTvSeriesRecommendations, tvId) => {
 
   useEffect(() => {
     fetchDetail();
-  }, []);
+  }, [tvId]);
 
   return { loading, error };
 };

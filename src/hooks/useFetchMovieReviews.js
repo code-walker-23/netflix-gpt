@@ -25,7 +25,7 @@ const useFetchMovieReviews = (setMovieReviews, movieId) => {
 
   useEffect(() => {
     fetchDetail();
-  }, []);
+  }, [movieId]);
 
   return { loading, error };
 };

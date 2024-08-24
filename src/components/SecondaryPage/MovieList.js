@@ -3,9 +3,13 @@ import MovieCards from "./MovieCards";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Using FontAwesome icons
 import { Link } from "react-router-dom";
 import "./hideScollbar.css";
+import { toggleGptView } from "../../utils/Slices/gpt/gptToggleSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const MovieList = ({ title, list, type }) => {
   const scrollRef = useRef(null);
+  const dispatch = useDispatch();
+  const showGpt = useSelector((state) => state.gptToggle.showGptView);
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -48,7 +52,13 @@ const MovieList = ({ title, list, type }) => {
                   : `/browse/tvdetail/${movie.id}`;
 
               return (
-                <Link to={url} key={movie.id}>
+                <Link
+                  to={url}
+                  key={movie.id}
+                  onClick={() => {
+                    showGpt && dispatch(toggleGptView());
+                  }}
+                >
                   <MovieCards movie={movie} />
                 </Link>
               );

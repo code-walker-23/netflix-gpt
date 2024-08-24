@@ -1,15 +1,18 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { NETFLIX_LOGO } from "../utils/constant";
-import NavItems from "../components/Header/NavItems";
-import Buttons from "../components/Header/Buttons";
-import { toggle } from "../components/Header/Toggle";
+import NavItems from "./Header/NavItems";
+import Buttons from "./Header/Buttons";
+import { toggle } from "./Header/Toggle";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleGptView } from "../utils/Slices/gpt/gptToggleSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const showGpt = useSelector((store) => store.gptToggle.showGptView);
   const userIconRef = useRef(null);
   const dropdownRef = useRef(null);
   const [showDropDown, setShowDropDown] = useState(false);
-
   const { toggleDropDown, handleToggle } = toggle({
     setShowDropDown,
     userIconRef,
@@ -25,6 +28,9 @@ const Header = () => {
             className="w-24 md:w-32 mr-6"
             src={NETFLIX_LOGO}
             alt="Netflix Logo"
+            onClick={() => {
+              showGpt && dispatch(toggleGptView());
+            }}
           />
         </Link>
 

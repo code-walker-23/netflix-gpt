@@ -28,7 +28,7 @@ const useFetchSeasonDetail = (tvId, seasonId, setEpisodes) => {
 
   useEffect(() => {
     fetchDetail();
-  }, []);
+  }, [tvId,seasonId]);
 
   return { loading, error };
 };

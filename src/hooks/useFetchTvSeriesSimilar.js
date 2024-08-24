@@ -25,7 +25,7 @@ const useFetchTvSeriesSimilar = (setTvSeriesSimilar, tvSeriesId) => {
 
   useEffect(() => {
     fetchDetail();
-  }, []);
+  }, [tvSeriesId]);
 
   return { loading, error };
 };

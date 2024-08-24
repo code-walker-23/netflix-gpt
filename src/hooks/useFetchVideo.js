@@ -20,7 +20,7 @@ const useFetchVideos = (movieId, setVideos) => {
     if (movieId) {
       fetchVideos();
     }
-  }, [movieId, setVideos]);
+  }, [movieId]);
 };
 
 export default useFetchVideos;

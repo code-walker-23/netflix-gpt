@@ -25,7 +25,7 @@ const useFetchMovieRecommendations = (setMovieRecommendations, movieId) => {
 
   useEffect(() => {
     fetchDetail();
-  }, []);
+  }, [movieId]);
 
   return { loading, error };
 };

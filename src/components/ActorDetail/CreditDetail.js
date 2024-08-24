@@ -24,6 +24,7 @@ const CreditDetail = ({ creditDetail }) => {
             <h3 className="text-3xl font-bold text-white mb-2">{media.title}</h3>
             <p className="text-sm text-gray-400 mb-2">
               Released on: {new Date(media.release_date).toLocaleDateString()}
+              {/* credit detail */}
             </p>
             <p className="text-sm text-gray-300 mb-4">
               Genre: {media.genre_ids.join(", ")}

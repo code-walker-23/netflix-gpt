@@ -25,7 +25,7 @@ const useFetchMovieSimilar = (setMovieSimilar, movieId) => {
 
   useEffect(() => {
     fetchDetail();
-  }, []);
+  }, [movieId]);
 
   return { loading, error };
 };

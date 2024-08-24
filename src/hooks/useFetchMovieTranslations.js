@@ -25,7 +25,7 @@ const useFetchMovieTranslations = (setMovieTranslations, movieId) => {
 
   useEffect(() => {
     fetchDetail();
-  }, []);
+  }, [movieId]);
 
   return { loading, error };
 };

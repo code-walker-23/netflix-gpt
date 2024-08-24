@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { toggleGptView } from "../../utils/Slices/gpt/gptToggleSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { USER_ICON } from "../../utils/constant";
 import { handleSignOut } from "./handleSignOut";
 const Buttons = ({
@@ -10,8 +11,9 @@ const Buttons = ({
   userIconRef,
   toggleDropDown,
 }) => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const{email} = user;
+  const { email } = user;
   const showGpt = useSelector((state) => state.gptToggle.showGptView);
   return (
     <div className="relative flex items-center">
@@ -40,6 +42,9 @@ const Buttons = ({
               <Link
                 to="/profile"
                 className="block py-2 px-4 text-white hover:bg-gray-800"
+                onClick={() => {
+                  showGpt && dispatch(toggleGptView());
+                }}
               >
                 Profile
               </Link>
