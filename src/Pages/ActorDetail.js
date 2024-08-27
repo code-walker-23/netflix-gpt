@@ -37,11 +37,7 @@ export const ActorDetail = () => {
           {actorName}'s Filmography
         </h1>
 
-        {isLoading && (
-          <div className="text-white text-center p-8">
-            <ShimmerEffect />
-          </div>
-        )}
+        {isLoading && <ShimmerEffect />}
 
         {error && (
           <div className="text-red-500 text-center p-8">Error: {error}</div>

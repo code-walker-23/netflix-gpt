@@ -1,10 +1,8 @@
 import React from "react";
 import { TMDB_IMG_BASE_URL_500 } from "../../utils/constant";
-
-
 const MovieCards = ({ movie }) => {
+  // console.log(movie);
   const { title, poster_path, vote_average } = movie;
-
 
   return (
     <div className="relative w-64 h-80 bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl flex-shrink-0">

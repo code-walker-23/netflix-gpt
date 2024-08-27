@@ -10,6 +10,7 @@ import { toggleGptView } from "../../utils/Slices/gpt/gptToggleSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const showGpt = useSelector((store) => store.gptToggle.showGptView);
+  const user = useSelector((store) => store.user);
   const userIconRef = useRef(null);
   const dropdownRef = useRef(null);
   const [showDropDown, setShowDropDown] = useState(false);
@@ -34,17 +35,20 @@ const Header = () => {
           />
         </Link>
 
-        {/* Navigation Links */}
-        <NavItems />
-
-        {/* Buttons */}
-        <Buttons
-          handleToggle={handleToggle}
-          dropdownRef={dropdownRef}
-          showDropDown={showDropDown}
-          userIconRef={userIconRef}
-          toggleDropDown={toggleDropDown}
-        />
+        {user.uid ? (
+          <>
+            <NavItems />
+            <Buttons
+              handleToggle={handleToggle}
+              dropdownRef={dropdownRef}
+              showDropDown={showDropDown}
+              userIconRef={userIconRef}
+              toggleDropDown={toggleDropDown}
+            />
+          </>
+        ) : (
+          "Guest"
+        )}
       </div>
     </header>
   );

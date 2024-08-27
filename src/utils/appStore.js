@@ -6,6 +6,7 @@ import configReducers from "./Slices/gpt/configSlice";
 import movieReducers from "./Slices/gpt/movieGptSlice";
 import userUpdateReducers from "./Slices/userUpdateSlice";
 import tvReducers from "./Slices/TvSlice";
+import myListReducers from "./Slices/myListSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     config: configReducers,
     moviesGpt: movieReducers,
     tv: tvReducers,
+    list: myListReducers,
   },
 });
 

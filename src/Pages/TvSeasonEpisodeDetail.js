@@ -26,13 +26,7 @@ const TvSeasonEpisodeDetail = () => {
 
       {/* Main Content */}
       <main className="p-6 lg:p-12 mt-6">
-        {loading && (
-          <div className="text-center text-gray-400">
-            <p>
-              <ShimmerEffect />
-            </p>
-          </div>
-        )}
+        {loading && <ShimmerEffect />}
         {error && (
           <div className="text-center text-red-500">
             <p>Error loading episode details. Please try again later.</p>

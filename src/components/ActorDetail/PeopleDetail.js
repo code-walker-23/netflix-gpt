@@ -9,13 +9,7 @@ const PeopleDetail = ({ actorId }) => {
   const { loading, error } = useFetchPeopleDetail(actorId, setPeopleDetail);
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
-        <div className="text-lg">
-          <ShimmerEffect/>
-        </div>
-      </div>
-    );
+    return <ShimmerEffect />;
   }
 
   if (error) {

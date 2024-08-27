@@ -11,7 +11,7 @@ const DiscoverMovies = () => {
 
   return (
     <div className="bg-gray-900 min-h-screen py-8 px-6 flex flex-col items-center">
-      <div className=" mt-14">
+      <div className=" mt-16">
         <button
           onClick={() => setShowSearch(!showSearch)}
           className="p-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105"
@@ -23,11 +23,7 @@ const DiscoverMovies = () => {
       {/* Main Card */}
       {!showSearch && (
         <div className="w-full max-w-9xl bg-gray-900 p-8 mt-3">
-          {loading && (
-            <div className="flex justify-center items-center h-64">
-              <ShimmerEffect />
-            </div>
-          )}
+          {loading && <ShimmerEffect />}
 
           {error && (
             <div className="flex justify-center items-center h-64">

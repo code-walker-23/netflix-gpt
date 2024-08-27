@@ -30,15 +30,7 @@ const TvSeasonDetail = () => {
 
       {/* Main Content */}
       <main className="p-6 lg:p-12 mt-8">
-        {loading && (
-          <div className="flex justify-center items-center h-96">
-            <div className="text-center text-gray-400 text-xl">
-              <p>
-                <ShimmerEffect />
-              </p>
-            </div>
-          </div>
-        )}
+        {loading && <ShimmerEffect />}
         {error && (
           <div className="flex justify-center items-center h-96">
             <div className="text-center text-red-500 text-xl">

@@ -15,7 +15,7 @@ const useAuthStateChange = () => {
       if (user) {
         const { uid, email, displayName } = user;
         const url = "https://avatars.githubusercontent.com/u/116024992?v=4";
-        dispatch(addUser({ uid, email, displayName,url}));
+        dispatch(addUser({ uid, email, displayName, url }));
         if (window.location.pathname === "/") {
           navigate("/browse");
         }
@@ -29,7 +29,7 @@ const useAuthStateChange = () => {
     });
 
     return () => unsubscribe();
-  }, [dispatch, navigate]);
+  }, []);
 };
 
 export default useAuthStateChange;

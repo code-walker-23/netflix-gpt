@@ -4,11 +4,7 @@ import ShimmerEffect from "../../utils/Shimmer";
 const TrendingLoadingError = ({ loading, error }) => {
   return (
     <>
-      {loading && (
-        <div className="flex justify-center items-center h-64">
-          <ShimmerEffect />
-        </div>
-      )}
+      {loading && <ShimmerEffect />}
 
       {error && (
         <div className="flex justify-center items-center h-64">

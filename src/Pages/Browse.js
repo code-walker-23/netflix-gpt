@@ -12,7 +12,7 @@ const Browse = () => {
     <div className="browse relative min-h-screen bg-gray-900 text-white">
       <>
         {loading ? (
-          <ShimmerEffect /> // Show shimmer effect while loading
+          <ShimmerEffect /> 
         ) : (
           <>
             <MainContainer />

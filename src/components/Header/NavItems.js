@@ -6,6 +6,8 @@ import { toggleGptView } from "../../utils/Slices/gpt/gptToggleSlice";
 const NavItems = () => {
   const dispatch = useDispatch();
   const showGpt = useSelector((state) => state.gptToggle.showGptView);
+  const list = useSelector((store) => store.list.myList);
+  console.log(list);
 
   const handlerGptView = () => {
     if (showGpt) {
@@ -23,13 +25,6 @@ const NavItems = () => {
         Home
       </Link>
       <Link
-        to="/discovertvshows"
-        className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
-        onClick={handlerGptView}
-      >
-        TV Shows
-      </Link>
-      <Link
         to="/discovermovies"
         className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
         onClick={handlerGptView}
@@ -37,25 +32,33 @@ const NavItems = () => {
         Movies
       </Link>
       <Link
+        to="/discovertvshows"
+        className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
+        onClick={handlerGptView}
+      >
+        TV Shows
+      </Link>
+
+      <Link
         to="/trending"
         className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
         onClick={handlerGptView}
       >
-        New & Popular
-      </Link>
-      <Link
-        to="/movietvlist"
-        className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
-        onClick={handlerGptView}
-      >
-        Genres
+        Trending
       </Link>
       <Link
         to="/list"
         className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
         onClick={handlerGptView}
       >
-        Popular People
+        People
+      </Link>
+      <Link
+        to="/mylist"
+        className="text-sm font-semibold hover:text-red-600 transition-colors duration-300"
+        onClick={handlerGptView}
+      >
+        {list.length > 0 ? `My List(${list.length})` : "My List"}
       </Link>
     </nav>
   );

@@ -8,13 +8,7 @@ const PeopleImages = ({ actorId }) => {
   const { loading, error } = useFetchPeopleImages(actorId, setPeopleImages);
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
-        <div className="text-lg">
-          <ShimmerEffect />
-        </div>
-      </div>
-    );
+    return <ShimmerEffect />;
   }
 
   if (error) {

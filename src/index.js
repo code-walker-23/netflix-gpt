@@ -21,6 +21,7 @@ import DiscoverMovies from "./Pages/DiscoverMovies";
 import DiscoverTvShows from "./Pages/DiscovertvShows";
 import MovieTvList from "./Pages/Genres";
 import PopularPeopleList from "./Pages/PopularPeopleList";
+import MyList from "./Pages/MyList";
 
 const appRouter = createBrowserRouter([
   {
@@ -46,10 +47,6 @@ const appRouter = createBrowserRouter([
       {
         path: "discovertvshows",
         element: <DiscoverTvShows />,
-      },
-      {
-        path: "movietvlist",
-        element: <MovieTvList />,
       },
       {
         path: "browse",
@@ -86,6 +83,10 @@ const appRouter = createBrowserRouter([
       {
         path: "trending",
         element: <Trending />,
+      },
+      {
+        path: "mylist",
+        element: <MyList />,
       },
     ],
   },

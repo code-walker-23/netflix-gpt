@@ -30,11 +30,7 @@ const TvDetail = () => {
   };
 
   if (loading) {
-    return (
-      <div className="text-center text-white mt-20">
-        <ShimmerEffect />
-      </div>
-    );
+    return <ShimmerEffect />;
   }
 
   if (error || !tvDetail.name) {
@@ -65,7 +61,6 @@ const TvDetail = () => {
     genres = [],
     last_episode_to_air = {},
     next_episode_to_air = {},
-
   } = tvDetail;
 
   return (
@@ -96,7 +91,13 @@ const TvDetail = () => {
 
       {/* Overview Card */}
 
-      <OverviewCard overview={overview} genres={genres} networks={networks} last_episode_to_air={last_episode_to_air} next_episode_to_air={next_episode_to_air} />
+      <OverviewCard
+        overview={overview}
+        genres={genres}
+        networks={networks}
+        last_episode_to_air={last_episode_to_air}
+        next_episode_to_air={next_episode_to_air}
+      />
 
       {/* Production Details */}
       <ProductionDetail
@@ -110,20 +111,20 @@ const TvDetail = () => {
       <SeasonSection seasons={seasons} tvId={tvId} seasonsRef={seasonsRef} />
 
       {/* Recommendations Section */}
-      <div ref={recommendationRef} >
+      <div ref={recommendationRef}>
         <TvSeriesRecommendation tvId={tvId} />
       </div>
 
       {/* Similar Shows Section */}
-      <div ref={similarRef} >
+      <div ref={similarRef}>
         <TvSeriesSimilar tvId={tvId} />
       </div>
 
       {/* Cast & Crew Section */}
-      <div ref={creditsRef} >
+      <div ref={creditsRef}>
         <TvSeriesCredit tvId={tvId} />
       </div>
-      <div >
+      <div>
         <TvSeriesReviews tvId={tvId} />
       </div>
     </div>

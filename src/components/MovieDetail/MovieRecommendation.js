@@ -11,13 +11,7 @@ const MovieRecommendation = ({ movieId }) => {
   );
 
   if (loading) {
-    return (
-      <div className="p-8 text-center text-white">
-        <p>
-          <ShimmerEffect />
-        </p>
-      </div>
-    );
+    return <ShimmerEffect />;
   }
 
   if (error) {
@@ -31,11 +25,7 @@ const MovieRecommendation = ({ movieId }) => {
   return (
     <div className="p-8 bg-gray-900 rounded-lg shadow-lg mt-8">
       <h2 className="text-4xl font-bold text-white mb-6">Recommended Movies</h2>
-      <MovieList
-        list={movieRecommendations}
-        title={""} 
-        type={"movie"}
-      />
+      <MovieList list={movieRecommendations} title={""} type={"movie"} />
     </div>
   );
 };

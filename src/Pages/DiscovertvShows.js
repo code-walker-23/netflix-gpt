@@ -26,11 +26,7 @@ const DiscoverTvShows = () => {
         <div className="w-full max-w-8xl mx-auto">
           {/* Card for Movie List */}
           <div className="bg-gray-900 p-8 rounded-lg shadow-lg">
-            {loading && (
-              <div className="flex justify-center items-center h-64">
-                <ShimmerEffect />
-              </div>
-            )}
+            {loading && <ShimmerEffect />}
 
             {error && (
               <div className="flex justify-center items-center h-64">
