@@ -10,7 +10,6 @@ const ButtonCard = ({ onClick, label }) => (
 );
 
 const Buttons = ({
-  productionRef,
   seasonsRef,
   recommendationRef,
   similarRef,
@@ -24,10 +23,6 @@ const Buttons = ({
         <div className="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700">
           <h2 className="text-3xl font-bold mb-6 text-white">Explore Sections</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ButtonCard
-              onClick={() => scrollToSection(productionRef)}
-              label="Production Details"
-            />
             <ButtonCard
               onClick={() => scrollToSection(seasonsRef)}
               label="Seasons"

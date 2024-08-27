@@ -17,7 +17,6 @@ const TvDetail = () => {
   const [tvDetail, setTvDetail] = React.useState({});
   const { loading, error } = useFetchTvDetail(tvId, setTvDetail);
 
-  const productionRef = useRef(null);
   const seasonsRef = useRef(null);
   const recommendationRef = useRef(null);
   const similarRef = useRef(null);
@@ -42,17 +41,7 @@ const TvDetail = () => {
   }
 
   const {
-    backdrop_path,
-    poster_path,
-    name,
     overview,
-    first_air_date,
-    last_air_date,
-    vote_average,
-    vote_count,
-    number_of_seasons,
-    number_of_episodes,
-    homepage,
     seasons = [],
     production_companies = [],
     production_countries = [],
@@ -66,30 +55,7 @@ const TvDetail = () => {
   return (
     <div className="bg-gray-900 text-white min-h-screen pt-20">
       {/* Hero Section */}
-      <HeroSection
-        backdrop_path={backdrop_path}
-        poster_path={poster_path}
-        name={name}
-        first_air_date={first_air_date}
-        last_air_date={last_air_date}
-        number_of_seasons={number_of_seasons}
-        number_of_episodes={number_of_episodes}
-        vote_average={vote_average}
-        vote_count={vote_count}
-        homepage={homepage}
-      />
-
-      {/* Buttons */}
-      <Buttons
-        productionRef={productionRef}
-        seasonsRef={seasonsRef}
-        recommendationRef={recommendationRef}
-        similarRef={similarRef}
-        creditsRef={creditsRef}
-        scrollToSection={scrollToSection}
-      />
-
-      {/* Overview Card */}
+      <HeroSection tvDetail={tvDetail} />
 
       <OverviewCard
         overview={overview}
@@ -101,10 +67,17 @@ const TvDetail = () => {
 
       {/* Production Details */}
       <ProductionDetail
-        productionRef={productionRef}
         production_companies={production_companies}
         production_countries={production_countries}
         spoken_languages={spoken_languages}
+      />
+      {/* Buttons */}
+      <Buttons
+        seasonsRef={seasonsRef}
+        recommendationRef={recommendationRef}
+        similarRef={similarRef}
+        creditsRef={creditsRef}
+        scrollToSection={scrollToSection}
       />
 
       {/* Seasons Section */}

@@ -11,7 +11,6 @@ import {
 } from "../../utils/constant";
 import { useDispatch } from "react-redux";
 import { addToList, removeToList } from "../../utils/Slices/myListSlice";
-import { useSelector } from "react-redux";
 import { useState } from "react";
 
 const HeroSection = ({ movieDetail }) => {
@@ -26,6 +25,7 @@ const HeroSection = ({ movieDetail }) => {
 
   const handleAddToList = () => {
     if (plus) {
+      if (!movieDetail.media_type) movieDetail.media_type = "movie";
       dispatch(addToList(movieDetail));
     } else {
       dispatch(removeToList(movieDetail.id));
