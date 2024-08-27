@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { handleSubmit } from "./Login Logic/handleSubmit";
 import LoginForm from "./LoginForm";
+import { Link } from "react-router-dom";
 
 const LoginStyle = ({
   toggleSignIn,
@@ -62,11 +63,9 @@ const LoginStyle = ({
             <input type="checkbox" className="custom-checkbox" />
             <span className="text-white">Remember me</span>
           </label>
-          {isSignInForm && (
-            <a href="/" className="text-white hover:underline">
-              Forgot Password?
-            </a>
-          )}
+          <Link to="/" className="text-white hover:underline">
+            Forgot Password?
+          </Link>
         </div>
         <p className="text-gray-500 mt-6 text-center text-lg">
           {isSignInForm ? "New to Netflix?" : "Already have an account?"}{" "}

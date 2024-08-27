@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../utils/firebase";
 import { toast } from "react-toastify";
-export const handleSignIn = async ({email,password}) => {
+export const handleSignIn = async ({ email, password }) => {
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
