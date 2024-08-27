@@ -1,31 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Masonry from "react-masonry-css";
 import "../components/MovieDetail/movieImages.css";
-import { options } from "../utils/constant";
 import { TMDB_IMG_BASE_URL } from "../utils/constant";
+import useFetchMovieImages from "../hooks/useFetchMovieImages";
 
 const MovieImages = () => {
-  const [movieImages, setMovieImages] = useState({
-    backdrops: [],
-    posters: [],
-    logos: [],
-  });
   const { movieId } = useParams();
 
-  const fetchMovieImages = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/images`,
-      options
-    );
-    const data = await response.json();
-    setMovieImages(data);
-  };
-
-  useEffect(() => {
-    fetchMovieImages();
-  }, [movieId]);
-
+  const { movieImages } = useFetchMovieImages(movieId);
   return (
     <div className="movie-images-container">
       <h1 className="page-title mt-8">Movie Images</h1>

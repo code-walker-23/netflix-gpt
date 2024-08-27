@@ -19,7 +19,6 @@ import TvSeasonDetail from "./Pages/TvSeasonDetail";
 import TvSeasonEpisodeDetail from "./Pages/TvSeasonEpisodeDetail";
 import DiscoverMovies from "./Pages/DiscoverMovies";
 import DiscoverTvShows from "./Pages/DiscovertvShows";
-import MovieTvList from "./Pages/Genres";
 import PopularPeopleList from "./Pages/PopularPeopleList";
 import MyList from "./Pages/MyList";
 
