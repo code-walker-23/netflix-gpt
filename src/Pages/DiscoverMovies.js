@@ -11,44 +11,43 @@ const DiscoverMovies = () => {
 
   return (
     <div className="bg-gray-900 min-h-screen py-8 px-6 flex flex-col items-center">
-      <div className=" mt-16">
+      {/* Button to Toggle Search and Movies */}
+      <div className="w-full max-w-4xl mb-8 mt-16">
         <button
           onClick={() => setShowSearch(!showSearch)}
-          className="p-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105"
+          className="w-full px-6 py-3 bg-red-600 text-white rounded-full shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-transform transform hover:scale-105"
         >
-          {showSearch ? "Popular Movies" : "Search Movies"}
+          {showSearch ? "Show Popular Movies" : "Search Movies"}
         </button>
       </div>
 
-      {/* Main Card */}
-      {!showSearch && (
-        <div className="w-full max-w-9xl bg-gray-900 p-8 mt-3">
-          {loading && <ShimmerEffect />}
+      {/* Main Content */}
+      <div className="w-full max-w-7xl mx-auto">
+        {showSearch ? (
+          <Search type={"movie"} />
+        ) : (
+          // Movie List
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+            {loading && <ShimmerEffect />}
 
-          {error && (
-            <div className="flex justify-center items-center h-64">
-              <p className="text-red-500 text-lg">Error: {error}</p>
-            </div>
-          )}
+            {error && (
+              <div className="flex justify-center items-center h-64">
+                <p className="text-red-400 text-lg font-semibold">
+                  Error: {error}
+                </p>
+              </div>
+            )}
 
-          {!loading && !error && (
-            <div>
+            {!loading && !error && (
               <MovieList
                 list={discoverMovies}
                 title="Popular Movies"
                 type={"movie"}
               />
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Search Component */}
-      {showSearch && (
-        <div className=" w-full max-w-9xl">
-          <Search type={"movie"} />
-        </div>
-      )}
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

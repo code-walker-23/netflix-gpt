@@ -19,7 +19,7 @@ import TvSeasonDetail from "./Pages/TvSeasonDetail";
 import TvSeasonEpisodeDetail from "./Pages/TvSeasonEpisodeDetail";
 import DiscoverMovies from "./Pages/DiscoverMovies";
 import DiscoverTvShows from "./Pages/DiscovertvShows";
-import PopularPeopleList from "./Pages/PopularPeopleList";
+import PopularPeopleList from "./Pages/People";
 import MyList from "./Pages/MyList";
 
 const appRouter = createBrowserRouter([

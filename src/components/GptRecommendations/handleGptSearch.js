@@ -21,7 +21,7 @@ export const useHandleGptSearch = () => {
     dispatch(setBackgroundColor("bg-black"));
 
     try {
-      const query = `Give in one line only do not go for next line and act as a movie recommendation system and suggest some movies for the Query: ${searchText}. Only give names of 10 movies in one line only, comma-separated like the following: Movie1, Movie2, Movie3, Movie4, Movie5`;
+      const query = `Give in one line only do not go for next line and act as a movie recommendation system and suggest some movies for the Query: ${searchText} and ${selectedLanguage}. Only give names of 10 movies in one line only, comma-separated like the following: Movie1, Movie2, Movie3, Movie4, Movie5`;
 
       const response = await axios({
         url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${process.env.REACT_APP_GEMINI_API_KEY}`,
@@ -40,7 +40,9 @@ export const useHandleGptSearch = () => {
 
       // Fetch details for each movie and update state
       const details = await Promise.all(
-        movies.map((movie) => useFetchMovieDetail(movie, selectedLanguage,page))
+        movies.map((movie) =>
+          useFetchMovieDetail(movie, selectedLanguage, page)
+        )
       );
       const movieDetailsObj = movies.reduce((acc, movie, index) => {
         acc[movie] = details[index];

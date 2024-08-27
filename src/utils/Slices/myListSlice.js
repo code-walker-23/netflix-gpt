@@ -16,8 +16,11 @@ const myListSlice = createSlice({
       const idToRemove = action.payload;
       state.myList = state.myList.filter((item) => item.id !== idToRemove);
     },
+    clearList: (state) => {
+      return { myList: [] };
+    },
   },
 });
 
-export const { addToList, removeToList } = myListSlice.actions;
+export const { addToList, removeToList, clearList } = myListSlice.actions;
 export default myListSlice.reducer;

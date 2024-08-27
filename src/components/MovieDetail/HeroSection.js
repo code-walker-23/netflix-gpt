@@ -54,7 +54,7 @@ const HeroSection = ({ movieDetail }) => {
           />
 
           <div className="mt-6 md:mt-0 md:ml-6 lg:ml-8 max-w-lg text-center md:text-left flex flex-col justify-center">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 mt-10">
               {title}
             </h1>
 

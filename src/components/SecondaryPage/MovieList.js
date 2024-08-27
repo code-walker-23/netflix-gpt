@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import MovieCards from "./MovieCards";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Using FontAwesome icons
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./hideScollbar.css";
-import { toggleGptView } from "../../utils/Slices/gpt/gptToggleSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { toggleGptView } from "../../utils/Slices/gpt/gptToggleSlice";
 
 const MovieList = ({ title, list, type }) => {
   const scrollRef = useRef(null);
@@ -22,16 +22,21 @@ const MovieList = ({ title, list, type }) => {
   };
 
   return (
-    <div className="mb-12 relative">
-      <h2 className="text-4xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 shadow-lg">
-        {title}
-      </h2>
+    <div className="mb-16 relative">
+      {/* Heading */}
+      <div className="mb-6">
+        <h2 className="text-4xl font-extrabold text-white text-center bg-gray-800 bg-opacity-75 p-6 rounded-md shadow-md">
+          {title}
+        </h2>
+      </div>
 
+      {/* Scrollable Container */}
       <div className="relative flex items-center">
         {/* Left Scroll Button */}
         <button
           onClick={() => scroll("left")}
-          className="absolute left-2 z-10 p-3 bg-gradient-to-r from-gray-800 to-gray-600 text-white rounded-full shadow-xl hover:shadow-2xl focus:outline-none transition-transform transform hover:scale-110 flex items-center justify-center"
+          className="absolute left-2 z-10 p-3 bg-gray-900 text-white rounded-full shadow-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-transform transform hover:scale-110 flex items-center justify-center"
+          style={{ top: "50%", transform: "translateY(-50%)" }}
         >
           <FaChevronLeft className="w-6 h-6" />
         </button>
@@ -45,7 +50,6 @@ const MovieList = ({ title, list, type }) => {
           {list &&
             list.map((movie) => {
               const mediaType = movie.media_type || type;
-
               const url =
                 mediaType === "movie"
                   ? `/browse/moviedetail/${movie.id}`
@@ -68,7 +72,8 @@ const MovieList = ({ title, list, type }) => {
         {/* Right Scroll Button */}
         <button
           onClick={() => scroll("right")}
-          className="absolute right-2 z-10 p-3 bg-gradient-to-r from-gray-800 to-gray-600 text-white rounded-full shadow-xl hover:shadow-2xl focus:outline-none transition-transform transform hover:scale-110 flex items-center justify-center"
+          className="absolute right-2 z-10 p-3 bg-gray-900 text-white rounded-full shadow-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-transform transform hover:scale-110 flex items-center justify-center"
+          style={{ top: "50%", transform: "translateY(-50%)" }}
         >
           <FaChevronRight className="w-6 h-6" />
         </button>

@@ -11,26 +11,30 @@ const DiscoverTvShows = () => {
 
   return (
     <div className="bg-gray-900 min-h-screen py-8 px-6 flex flex-col items-center">
-      <div className="flex justify-center mt-14">
-        {/* Button to Toggle*/}
+      {/* Button to Toggle Search and TV Shows */}
+      <div className="w-full max-w-4xl mb-8 mt-16">
         <button
           onClick={() => setShowSearch(!showSearch)}
-          className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105"
+          className="w-full px-6 py-3 bg-red-600 text-white rounded-full shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-transform transform hover:scale-105"
         >
-          {showSearch ? "Popular TV Shows" : "Search TV Shows"}
+          {showSearch ? "Show Popular TV Shows" : "Search TV Shows"}
         </button>
       </div>
 
-      {/* MovieList */}
-      {!showSearch && (
-        <div className="w-full max-w-8xl mx-auto">
-          {/* Card for Movie List */}
-          <div className="bg-gray-900 p-8 rounded-lg shadow-lg">
+      {/* Main Content */}
+      <div className="w-full max-w-7xl mx-auto">
+        {showSearch ? (
+          <Search type={"tv"} />
+        ) : (
+          // TV Shows List
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
             {loading && <ShimmerEffect />}
 
             {error && (
               <div className="flex justify-center items-center h-64">
-                <p className="text-red-500 text-lg">Error: {error}</p>
+                <p className="text-red-400 text-lg font-semibold">
+                  Error: {error}
+                </p>
               </div>
             )}
 
@@ -44,15 +48,8 @@ const DiscoverTvShows = () => {
               </div>
             )}
           </div>
-        </div>
-      )}
-
-      {/* Search */}
-      {showSearch && (
-        <div className="w-full max-w-8xl mx-auto">
-          <Search type={"tv"} />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
