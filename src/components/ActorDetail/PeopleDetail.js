@@ -54,8 +54,8 @@ const PeopleDetail = ({ actorId }) => {
           <div className="mb-6">
             <h2 className="text-2xl font-semibold mb-2">Also Known As:</h2>
             <ul className="list-disc list-inside pl-5 text-gray-300">
-              {also_known_as.map((alias, index) => (
-                <li key={index}>{alias}</li>
+              {also_known_as.map((nickName, index) => (
+                <li key={index}>{nickName}</li>
               ))}
             </ul>
           </div>
