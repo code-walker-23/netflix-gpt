@@ -10,6 +10,7 @@ const moviesSlice = createSlice({
   },
   reducers: {
     setNowPlayingMovies: (state, action) => {
+      // const newState = {...this.state};
       state.nowPlayingMovies = action.payload;
     },
     setPopularMovies: (state, action) => {

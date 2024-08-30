@@ -10,17 +10,20 @@ import Login from "./Pages/LoginPage";
 import Browse from "./Pages/Browse";
 import MovieDetail from "./Pages/MovieDetail";
 import VideoPage from "./Pages/MovieVideo";
-import Profile from "./Pages/Profile";
 import MovieImages from "./Pages/MovieImages";
 import { ActorDetail } from "./Pages/ActorDetail";
 import TvDetail from "./Pages/TvSeriesDetail";
 import Trending from "./Pages/Trending";
 import TvSeasonDetail from "./Pages/TvSeasonDetail";
 import TvSeasonEpisodeDetail from "./Pages/TvSeasonEpisodeDetail";
-import DiscoverMovies from "./Pages/DiscoverMovies";
-import DiscoverTvShows from "./Pages/DiscovertvShows";
 import PopularPeopleList from "./Pages/People";
 import MyList from "./Pages/MyList";
+import { lazy } from "react";
+import { Suspense } from "react";
+import ShimmerEffect from "./utils/Shimmer";
+const Profile = lazy(() => import("./Pages/Profile"));
+const DiscoverTvShows = lazy(() => import("./Pages/DiscovertvShows"));
+const DiscoverMovies = lazy(() => import("./Pages/DiscoverMovies"));
 
 const appRouter = createBrowserRouter([
   {
@@ -33,7 +36,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: (
+          <Suspense fallback={ShimmerEffect}>
+            <Profile />
+          </Suspense>
+        ),
       },
       {
         path: "list",
@@ -41,11 +48,19 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "discovermovies",
-        element: <DiscoverMovies />,
+        element: (
+          <Suspense fallback={ShimmerEffect}>
+            <DiscoverMovies />
+          </Suspense>
+        ),
       },
       {
         path: "discovertvshows",
-        element: <DiscoverTvShows />,
+        element: (
+          <Suspense fallback={ShimmerEffect}>
+            <DiscoverTvShows />
+          </Suspense>
+        ),
       },
       {
         path: "browse",
